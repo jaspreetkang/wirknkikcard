@@ -14,6 +14,7 @@
     "bootstrap": "~3.3.6",
     "angular": "~1.4.8",
     "angular-resource": "~1.4.8",
-    "angular-route": "~1.4.8"
+    "angular-route": "~1.4.8",
+    "ngGeolocation": "~0.0.8"
   }
 }
