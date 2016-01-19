@@ -1,0 +1,23 @@
+doctype html
+html(ng-app="myApp")
+  head
+    title= 'Wirkn | Local Job Search'
+    //link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/customization.css')
+    link(rel='stylesheet', href='/stylesheets/loader.css')
+    link(rel='stylesheet', href='/stylesheets/main-style.css')
+    link(rel='stylesheet', href='/stylesheets/simple-line-icons.css')
+    link(rel='stylesheet', href='/stylesheets/application.css')
+    link(rel='stylesheet', href='/stylesheets/simple-line-icons.css')
+
+    link(rel='stylesheet',href='vendor/bootstrap/dist/css/bootstrap.min.css')
+    script(type='text/javascript' src='vendor/jquery/dist/jquery.min.js')
+    script(type='text/javascript' src='/vendor/angular/angular.min.js')
+    script(type='text/javascript' src='/vendor/angular-route/angular-route.min.js')
+    script(type='text/javascript' src='/vendor/ngGeolocation/ngGeolocation.min.js')
+
+    script(type='text/javascript' src='/javascripts/app.js')
+    script(type='text/javascript' src='/javascripts/controllers.js')
+    script(type='text/javascript' src='https://cdn.kik.com/kik/2.0.5/kik.js')
+  body(class = "kik")
+    block content

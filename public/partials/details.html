@@ -1,0 +1,89 @@
+<div class="job-header" style="background-image: url('');">
+	<div class="container">
+		<!-- BACK ARROW -->
+		<div class="row back-icon">
+			<!--<a href="#/list#item_{{whichItem}}"><i class="fa fa-chevron-left"></i><span>Back</span></a>-->
+			<a href="#" onclick="window.history.back()"><i class="fa fa-chevron-left"></i><span>Back</span></a>
+		</div>
+		<!-- JOB INFO BAR -->
+		<div class="row">
+			<div class="col-md-12 job-header-text" ng-model="joblist">
+				<div class="job-header-title">{{joblist[whichItem].title}}</div>
+				<div class="lightweight">
+					{{joblist[whichItem].employer.name}}<br>
+					<i class="fa fa-map-marker"></i> {{joblist[whichItem].location.address}},{{joblist[whichItem].location.city}},{{joblist[whichItem].location.province}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container job-body">
+	<div class="row">
+		<div class="col-md-12 data-box">
+			<div class="row">
+				<div class="col-md-12 job-body-heading">
+					ROLE
+				</div>
+				<div class="col-md-12">
+					{{joblist[whichItem].title}} at {{joblist[whichItem].employer.name}}
+				</div>
+				<br>
+				<div class="col-md-12 job-body-heading">
+					JOB TYPE
+				</div>
+				<div class="col-md-12">
+					{{joblist[whichItem].employment_type}}
+				</div>
+				<br>
+				<div class="col-md-12 job-body-heading">
+					LOCATION
+				</div>
+				<div class="col-md-12">
+					<a class="underline" href="http://maps.google.com/?q={{joblist[whichItem].location.address}}">{{joblist[whichItem].location.address}},{{joblist[whichItem].location.city}},{{joblist[whichItem].location.province}}</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 data-box job-body-details">
+			<div class="row">
+				<div class="col-md-12 job-body-heading">
+					JOB DETAILS
+				</div>
+				<div class="col-md-12">
+					<pre>{{joblist[whichItem].description}}</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="quick-apply">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<img class="kik-wirkn-logo" ng-src="/images/wirkn-logo-icon.png" alt="Wirkn logo icon" />
+				<div class="quick-apply-text">
+					<b>QUICK APPLY</b><br>
+					<span class="lightweight">Create a Wirkn video application!</span>
+				</div>
+
+				<a class="quick-apply-link" href="http://wirkn.com/download-job#r:217662295302536190">
+					<button id="kik_branch_button" class="quick-apply-btn">APPLY NOW</button>
+				</a>			</div>
+		</div>
+	</div>
+</div>
+
+<!--
+<section class='jobdetail'>
+	<div class="job cf" ng-model="joblist">
+	<a href="#/details/{{prevItem}}"class="btn btn-left">&lt; prev </a>
+	<a href="#/details/{{nextItem}}"class="btn btn-left">&gt; next</a>
+		<h1>{{joblist[whichItem].title}}</h1>
+		<div class="info">
+			<h3>{{joblist[whichItem].employer.name}}</h3>
+
+			&lt;!&ndash; <img ng-src="images/{{joblist[whichItem].company}}.jpg" alt="Photo of {{joblist[whichItem].company}}"> &ndash;&gt;
+			<div class='desc'>{{joblist[whichItem].location.address}}</div>
+		</div>
+	</div>
+	<a href="#/list">&laquo; Back to Search</a>
+</section>-->

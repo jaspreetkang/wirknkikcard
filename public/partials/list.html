@@ -1,0 +1,83 @@
+<nav class="header">
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="float-left"><img class="kik-wirkn-logo" ng-src="images/wirkn-logo-icon.png" alt="Wirkn logo icon" /></div>
+				<span class="top-bar">Jobs <span class="in-city"></span></span>
+				<div class="float-right"><a href="#top-bar" class="search-icon pull-right" id="search_bar" style="color: white; font-size: 20px; display: none;" ><i class="fa fa-search"></i></a></div>
+			</div>
+		</div>
+	</div>
+</nav>
+<!-- Kik Convo Test -->
+<div class="offset" id="top-bar">
+</div>
+<div class="container">
+	<div class="row scroll">
+		<div class="col-md-12 data-box">
+			<form action="/en/kik" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="PC7tWfwogwdcutPF+lBYbJA1a0tUUyK4IcWmI6WkVO7YThd72wIpAX1jqmY58MKo9F3v8f3z32OK3aaGPcuYAw==" />
+				<input type="hidden" name="lat" id="lat" />
+				<input type="hidden" name="long" id="long" />
+				<input type="hidden" name="city" id="city" />
+				<input type="text" name="search" id="search" placeholder="&#xf002; Search" class="search" ng-model="query"/>
+			</form>
+		</div>
+		<!--<div class='text-center pre-load'>
+			<img style="margin-top:30px;" ng-src="/images/graphic.svg" alt="Graphic" />
+		</div>-->
+		<div ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction" id="item_{{joblist.indexOf(item)}}"><!-- | limitTo: 3 -->
+			<a href="#/details/{{joblist.indexOf(item)}}"  >
+				<div class="col-md-12 job-box">
+                    <div class="data-text">
+                        <div class="title">{{item.title}}</div>
+                        <div class="">{{item.employer.name}}</div>
+                        <div class="address">
+                            <i class="fa fa-map-marker"></i>
+                            <span>{{item.distance/1000 | number:2}}  km away</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                    <img ng-src="{{item.cover_images[0]}}"></div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+<!--
+<div class="container">
+	<div class="row scroll">
+		<div class="jscroll-inner">
+		<div class="col-md-12 data-box">
+			<h1>Job List</h1>
+			<label>search:</label>
+			<input ng-model="query" placeholder="Search for jobs" autofocus>
+			<label class="formgroup">by:
+				<select ng-model="jobOrder">
+					<option value="role">Role</option>
+					<option value="company">Company</option>
+				</select>
+			</label>
+			<label class="formgroup">
+			<input type="radio" ng-model="direction" name="direction" checked>ascending</label>
+			<label class="formgroup"><input type="radio" ng-model="direction" name="direction" value ="reverse">desending</label>
+
+		</div>
+		<ul class="joblist">
+			<li class="job cf" ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction">&lt;!&ndash; | limitTo: 3 &ndash;&gt;
+			<a href="#/details/{{joblist.indexOf(item)}}">
+				&lt;!&ndash; <img ng-src="images/{{item.company}}.jpg" alt="Photo of {{item.company}}"> &ndash;&gt;
+				<div class='info'> &lt;!&ndash; | uppercase'> &ndash;&gt;
+					<h2>{{item.title}}</h2>
+					<h3>{{item.description}}</h3>
+				</div>
+			</a>
+			</li>
+		</ul>
+		</div>
+	</div>
+	&lt;!&ndash; test hardcode data from single variable
+	<h1>{{message.name}}</h1>
+	<p>{{message.title + ',' + message.company}} </p>
+	&ndash;&gt;
+</div>
+-->
