@@ -17,6 +17,12 @@
     "angular-route": "~1.4.8",
     "ngGeolocation": "~0.0.8",
     "angular-bootstrap": "~1.1.0",
-    "font-awesome": "fontawesome#~4.5.0"
+    "font-awesome": "fontawesome#~4.5.0",
+    "angular-translate-loader-static-files": "~2.8.1",
+    "angular-translate": "~2.8.1",
+    "angular-translate-storage-local": "~2.8.1",
+    "angular-translate-handler-log": "~2.8.1",
+    "angular-dynamic-locale": "~0.1.29",
+    "angular-i18n": "~1.4.9"
   }
 }
