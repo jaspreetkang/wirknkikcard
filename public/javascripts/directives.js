@@ -5,16 +5,16 @@ translateDirective.directive('ngTranslateLanguageSelect', ['LocaleService', func
         return {
             restrict: 'A',
             replace: true,
-            template: ''+
-            '<div class="language-select" ng-if="visible">'+
-                '<label>'+
-                    '{{"directives.language-select.Language" | translate}}:'+
-                    '<select ng-model="currentLocaleDisplayName"'+
+            template: '' +
+            '<div class="language-select" ng-if="visible">' +
+                '<label>' +
+                    '{{"directives.language-select.Language" | translate}}: ' +
+                    '<select class="form-control" ng-model="currentLocaleDisplayName"' +
                         'ng-options="localesDisplayName for localesDisplayName in localesDisplayNames"'+
-                        'ng-change="changeLanguage(currentLocaleDisplayName)">'+
-                    '</select>'+
-                '</label>'+
-            '</div>'+
+                        'ng-change="changeLanguage(currentLocaleDisplayName)">' +
+                    '</select>' +
+                '</label>' +
+            '</div>' +
             '',
             controller: function ($scope) {
                 $scope.currentLocaleDisplayName = LocaleService.getLocaleDisplayName();

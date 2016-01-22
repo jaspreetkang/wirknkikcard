@@ -1,4 +1,5 @@
 {
     "partials.list.JobsIn": "Jobs In",
+    "partials.list.Search": "Search",
     "directives.language-select.Language": "Language"
 }

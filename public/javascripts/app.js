@@ -4,17 +4,19 @@ var myApp = angular.module('myApp',[
     'ngCookies',
     'pascalprecht.translate', // angular-translate
     'tmh.dynamicLocale', // angular-dynamic-locale
-	'joblistControllers', // javascript that is going to handle this module
 	'ui.bootstrap',
-    'jobServices',
+	'joblistControllers', // javascript that is going to handle this module
     'translateDirectives',
+    'jobServices',
     'localeServices'
 	])
     .constant('LOCALES', {
         'locales': {
-            'en_US': 'English'
+            'en_US': 'English',
+            'fr_CA': 'French',
+            'ru_RU': 'Russian'
         },
-        'preferredLocale': 'en_US'
+        'preferredLocale': 'fr_CA'
     });
 
 myApp.config(['$routeProvider', function($routeProvider){
