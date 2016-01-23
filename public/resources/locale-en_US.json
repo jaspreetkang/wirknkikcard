@@ -1,6 +1,8 @@
 {
     "partials.list.JobsIn": "Jobs In",
     "partials.list.Search": "Search",
+    "partials.list.Filter": "Filter Results",
+
     "partials.search.Food": "Food",
     "partials.search.CoffeeShops": "Coffee Shops",
     "partials.search.Bartender": "Bartender",
@@ -11,5 +13,6 @@
     "partials.search.CustomerSupport": "Customer Support",
     "partials.search.Business": "Business",
     "partials.search.Merchandising": "Merchandising",
+
     "directives.language-select.Language": "Language"
 }
