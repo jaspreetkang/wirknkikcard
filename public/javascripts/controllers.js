@@ -2,24 +2,20 @@
 var joblistControllers = angular.module('joblistControllers',[]);
 console.log("Controller");
 
-joblistControllers.controller('ListController', ['$scope', '$http', '$geolocation', 'JobService', function($scope, $http, $geolocation, JobService){
+joblistControllers.controller('ListController', ['$scope', '$http', '$geolocation', 'JobService', 'LocationService', function($scope, $http, $geolocation, JobService, LocationService){
 
-    $geolocation.getCurrentPosition({
-        timeout: 60000
-    }).then(function(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        JobService.getData(latitude, longitude).then(function onSuccess(data) {
+    var coordinates = LocationService.getCoordinates().then(function(coords) {
+        console.log(coords);
+        JobService.getData(coords.latitude, coords.longitude, '').then(function onSuccess(data) {
             $scope.joblist = data;
             $scope.jobOrder = 'title';
         }, function onError(response) {
             $scope.error = "failed to get data";		
-        })
+        });
     });
 }]);
 
 joblistControllers.controller('DetailsController',['$scope', '$http', '$routeParams', 'JobService', function($scope, $http, $routeParams, JobService) {
-	// $http.get('/getData').then(onJobDetailComplete, onError);
 
     JobService.getDetails().then(function(data) {
 		$scope.joblist = data;
@@ -28,7 +24,7 @@ joblistControllers.controller('DetailsController',['$scope', '$http', '$routePar
 			$scope.prevItem = Number($routeParams.itemId)-1;
 		}
 		else {
-			$scope.prevItem = $scope.joblist.length-1;
+			$scope.prevItem = $scope.joblist.length - 1;
 		}
 
 		if ($routeParams.itemId < $scope.joblist.length - 1) {
@@ -40,6 +36,54 @@ joblistControllers.controller('DetailsController',['$scope', '$http', '$routePar
 	}, function(reason) {
 		$scope.error = "failed to get data";		
     });
+}]);
+
+joblistControllers.controller('SearchController', ['$scope', 'JobService', function($scope, JobService) {
+    $scope.categories = [
+        {
+            name: "partials.search.Food",
+            term: "food"
+        },
+        {
+            name: "partials.search.CoffeeShops",
+            term: "coffee+shops"
+        },
+        {
+            name: "partials.search.Bartender",
+            term: "bartender"
+        },
+        {
+            name: "partials.search.Nightlife",
+            term: "nightlife"
+        },
+        {
+            name: "partials.search.Cashier",
+            term: "cashier"
+        },
+        {
+            name: "partials.search.Hospitality",
+            term: "hospitality"
+        },
+        {
+            name: "partials.search.CustomerSupport",
+            term: "customer+support"
+        },
+        {
+            name: "partials.search.Business",
+            term: "business"
+        },
+        {
+            name: "partials.search.Merchandising",
+            term: "merchandising"
+        }
+    ];
+
+    $scope.search = function(searchTerm) {
+        console.log(searchTerm);
+        JobService.getData(43.6419, -79.3746, searchTerm).then(function(data) {
+            console.log(data);
+        });
+    }
 }]);
 
 joblistControllers.controller('ModalMessageController', ['$scope', '$routeParams', '$uibModal', '$log', function($scope, $routeParams, $uibModal, $log) {
@@ -160,52 +204,5 @@ joblistControllers.controller('ModalMsgController',['$scope', '$routeParams', '$
 
     $scope.message = finalMsg;
 
-
 }]);
-/*
-	full app variable 
-	hold modules,[] hold dependencies for this application
-	myApp is going to have all the code for application..same as namespacing--it is way to protect code so that no other script is going to interfere with our app
-	myApp is unique to project
 
-var myApp = angular.module('myApp',[]);
-//scope is a variable that can be used to pass things from javascript to your application and template 
-myApp.controller('MyController',['$scope','$http',function($scope, $http){
-	$http.get('js/data.json').success(function(data){
-		$scope.joblist = data;
-		$scope.jobOrder = 'role';
-	});
-}])*/
-
-	/* test hard code data
-	$scope.message = {
-		'name': 'Jas',
-		'title':'Dev',
-		'company': '3pt'
-	};
-	
-	$scope.joblist = 
-		[
-			{
-				'category':'Restaurant',
-				'role':'Sales Associate',
-				'company':'RUDSAK Queen Street',
-				'details':'It is excellent place to work'
-			},
-			{
-				"category":"Restaurant",
-				"role":"Assistant Manager",
-				"company":"RUDSAK Queen Street",
-				"details":"Work, grow  and earn"
-			},
-			{
-				"category":"Restaurant",
-				"role":"Food Artist",
-				"company":"Crave Healthy Habits",
-				"details":"Place to feed healthy"
-			}
-		]
-	;*/
-
-//controllers.js
-//list.html

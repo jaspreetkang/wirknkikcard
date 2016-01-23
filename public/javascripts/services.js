@@ -9,7 +9,7 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
             var defer = $q.defer();
             lat = lat.toFixed(3);
             lon = lon.toFixed(3);
-            searchTerm = '';
+            //searchTerm = '';
             if (lat == self.latitude && lon == self.longitude && searchTerm == self.searchTerm) {
                 defer.resolve(self.cache.get('jobs'));
                 return defer.promise;
@@ -17,12 +17,13 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
             self.latitude = lat || '';
             self.longitude = lon || '';
             self.searchTerm = searchTerm || '';
-            $http.get('/getData?lat=' + self.latitude + '&lon=' + self.longitude)
+            $http.get('/getData?lat=' + self.latitude + '&lon=' + self.longitude + '&q=' + self.searchTerm)
             .then(function(response) {
                 self.cache.put('jobs', response.data);
                 defer.resolve(response.data);
             }, function(response) {
                 console.log(response);
+                defer.reject();
             });
 
             return defer.promise;
@@ -94,3 +95,55 @@ localeServices.service('LocaleService', ['$translate', 'LOCALES', '$rootScope', 
         }
     };
 }])
+
+var locationServices = angular.module('locationServices', []);
+
+locationServices.service('LocationService', ['$q', '$geolocation', function($q, $geolocation) {
+    var latitude = 0;
+    var longitude = 0;
+    var locationIsInitialized = false;
+
+    var initializeLocation = function() {
+        var defer = $q.defer();
+        $geolocation.getCurrentPosition({
+            timeout: 60000
+        }).then(function(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            locationIsInitialized = true;
+
+            defer.resolve(position);
+        }, function(position) {
+            defer.reject(position);
+        });
+
+        return defer.promise;
+    }
+
+    var getCoordinates = function() {
+        var defer = $q.defer()
+        if (locationIsInitialized) {
+            defer.resolve({
+                latitude: latitude,
+                longitude: longitude
+            });
+        } 
+        else {
+            initializeLocation().then(function(position) {
+                defer.resolve({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                });
+            }, function(position) {
+                console.log(position);
+                defer.reject(position);
+            });
+        }
+        return defer.promise;
+    };
+
+    return {
+        getCoordinates: getCoordinates,
+        initializeLocation: initializeLocation
+    };
+}]);

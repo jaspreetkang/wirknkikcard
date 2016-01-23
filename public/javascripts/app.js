@@ -8,7 +8,8 @@ var myApp = angular.module('myApp',[
 	'joblistControllers', // javascript that is going to handle this module
     'translateDirectives',
     'jobServices',
-    'localeServices'
+    'localeServices',
+    'locationServices'
 	])
     .constant('LOCALES', {
         'locales': {
@@ -41,6 +42,10 @@ myApp.config(['$routeProvider', function($routeProvider){
 		templateUrl: 'partials/locations.html',
 		controller: 'LocationsController'
 	}).
+    when('/search', {
+        templateUrl: 'partials/search.html',
+        controller: 'SearchController'
+    }).
 	otherwise({
 		redirectTo: '/list'
 	});
