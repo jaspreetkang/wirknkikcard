@@ -5,6 +5,7 @@ var myApp = angular.module('myApp',[
     'pascalprecht.translate', // angular-translate
     'tmh.dynamicLocale', // angular-dynamic-locale
     'ui.bootstrap',
+    'wirknAnimations',
     'joblistControllers', // javascript that is going to handle this module
     'translateDirectives',
     'jobServices',

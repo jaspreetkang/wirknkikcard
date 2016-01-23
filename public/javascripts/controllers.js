@@ -3,6 +3,8 @@ var joblistControllers = angular.module('joblistControllers',[]);
 
 joblistControllers.controller('ListController', ['$scope', 'JobService', 'LocationService', function($scope, JobService, LocationService){
 
+    $scope.pageClass = 'page-list';
+
     var coordinates = LocationService.getCoordinates().then(function(coords) {
         JobService.getData(coords.latitude, coords.longitude, '').then(function onSuccess(data) {
             $scope.joblist = data;
@@ -19,7 +21,13 @@ joblistControllers.controller('ListController', ['$scope', 'JobService', 'Locati
     });
 }]);
 
-joblistControllers.controller('DetailsController',['$scope', '$http', '$routeParams', 'JobService', function($scope, $http, $routeParams, JobService) {
+joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'JobService', function($scope, $routeParams, JobService) {
+
+    $scope.pageClass = 'page-details';
+
+    $scope.$on('$routeChangeSuccess', function(e, currentRoute, previousRoute) {
+        window.scrollTo(0, 0);
+    });
 
     JobService.getDetails().then(function(data) {
         $scope.joblist = data;
@@ -43,6 +51,13 @@ joblistControllers.controller('DetailsController',['$scope', '$http', '$routePar
 }]);
 
 joblistControllers.controller('SearchController', ['$scope', 'JobService', function($scope, JobService) {
+
+    $scope.pageClass = 'page-search';
+
+    $scope.$on('$routeChangeSuccess', function(e, currentRoute, previousRoute) {
+        window.scrollTo(0, 0);
+    });
+
     $scope.categories = [
         {
             name: "partials.search.Food",
