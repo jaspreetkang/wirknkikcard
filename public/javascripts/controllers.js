@@ -10,7 +10,7 @@ joblistControllers.controller('ListController', ['$scope', '$http', '$geolocatio
             $scope.joblist = data;
             $scope.jobOrder = 'title';
         }, function onError(response) {
-            $scope.error = "failed to get data";		
+            $scope.error = "failed to get data";        
         });
     });
 }]);
@@ -18,23 +18,23 @@ joblistControllers.controller('ListController', ['$scope', '$http', '$geolocatio
 joblistControllers.controller('DetailsController',['$scope', '$http', '$routeParams', 'JobService', function($scope, $http, $routeParams, JobService) {
 
     JobService.getDetails().then(function(data) {
-		$scope.joblist = data;
-		$scope.whichItem = $routeParams.itemId;
-		if ($routeParams.itemId > 0) {
-			$scope.prevItem = Number($routeParams.itemId)-1;
-		}
-		else {
-			$scope.prevItem = $scope.joblist.length - 1;
-		}
+        $scope.joblist = data;
+        $scope.whichItem = $routeParams.itemId;
+        if ($routeParams.itemId > 0) {
+            $scope.prevItem = Number($routeParams.itemId)-1;
+        }
+        else {
+            $scope.prevItem = $scope.joblist.length - 1;
+        }
 
-		if ($routeParams.itemId < $scope.joblist.length - 1) {
-			$scope.nextItem = Number($routeParams.itemId) + 1;
-		}
-		else {
-			$scope.nextItem = 0;
-		}		
-	}, function(reason) {
-		$scope.error = "failed to get data";		
+        if ($routeParams.itemId < $scope.joblist.length - 1) {
+            $scope.nextItem = Number($routeParams.itemId) + 1;
+        }
+        else {
+            $scope.nextItem = 0;
+        }       
+    }, function(reason) {
+        $scope.error = "failed to get data";        
     });
 }]);
 

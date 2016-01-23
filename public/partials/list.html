@@ -1,38 +1,38 @@
 <nav class="header">
-	<div class="container text-center">
-		<div class="row">
-			<div class="col-xs-6">
-				<div class="float-left"><img class="kik-wirkn-logo" ng-src="images/wirkn-logo-icon.png" alt="Wirkn logo icon" /></div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="float-left"><img class="kik-wirkn-logo" ng-src="images/wirkn-logo-icon.png" alt="Wirkn logo icon" /></div>
                 <span class="top-bar">{{"partials.list.JobsIn" | translate}} <span class="in-city"> {{joblist[0].location.city}}</span></span>
-				<div class="float-right"><a href="#top-bar" class="search-icon pull-right" id="search_bar" style="color: white; font-size: 20px; display: none;" ><i class="fa fa-search"></i></a></div>
-			</div>
-			<div class="col-xs-4">
+                <div class="float-right"><a href="#top-bar" class="search-icon pull-right" id="search_bar" style="color: white; font-size: 20px; display: none;" ><i class="fa fa-search"></i></a></div>
+            </div>
+            <div class="col-xs-4">
                 <div ng-translate-language-select></div>
-			</div>
+            </div>
             <div class="col-xs-1">
                 <a href="#/search"><i class="fa fa-search"></i></a>
             </div>
             <div class="col-xs-1">
                 <a href="#/list"><i class="fa fa-map-marker"></i></a>
             </div>
-		</div>
+        </div>
         <div class="row">
             <div class="col-md-12">
             </div>
         </div>
-	</div>
+    </div>
 </nav>
 <!-- Kik Convo Test -->
 <div class="offset" id="top-bar">
 </div>
 <div class="container">
-	<div class="row scroll">
-		<div class="col-md-12 data-box">
+    <div class="row scroll">
+        <div class="col-md-12 data-box">
             <input type="text" name="search" id="search" placeholder="{{'partials.list.Filter' | translate}}" class="search" ng-model="query"/>
-		</div>
-		<div ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction" id="item_{{joblist.indexOf(item)}}"><!-- | limitTo: 3 -->
-			<a href="#/details/{{joblist.indexOf(item)}}"  >
-				<div class="col-md-12 job-box">
+        </div>
+        <div ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction" id="item_{{joblist.indexOf(item)}}"><!-- | limitTo: 3 -->
+            <a href="#/details/{{joblist.indexOf(item)}}"  >
+                <div class="col-md-12 job-box">
                     <div class="data-text">
                         <div class="title">{{item.title}}</div>
                         <div class="">{{item.employer.name}}</div>
@@ -43,46 +43,46 @@
                     </div>
                     <div class="data-img">
                     <img ng-src="{{item.cover_images[0]}}"></div>
-				</div>
-			</a>
-		</div>
-	</div>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
 <!--
 <div class="container">
-	<div class="row scroll">
-		<div class="jscroll-inner">
-		<div class="col-md-12 data-box">
-			<h1>Job List</h1>
-			<label>search:</label>
-			<input ng-model="query" placeholder="Search for jobs" autofocus>
-			<label class="formgroup">by:
-				<select ng-model="jobOrder">
-					<option value="role">Role</option>
-					<option value="company">Company</option>
-				</select>
-			</label>
-			<label class="formgroup">
-			<input type="radio" ng-model="direction" name="direction" checked>ascending</label>
-			<label class="formgroup"><input type="radio" ng-model="direction" name="direction" value ="reverse">desending</label>
+    <div class="row scroll">
+        <div class="jscroll-inner">
+        <div class="col-md-12 data-box">
+            <h1>Job List</h1>
+            <label>search:</label>
+            <input ng-model="query" placeholder="Search for jobs" autofocus>
+            <label class="formgroup">by:
+                <select ng-model="jobOrder">
+                    <option value="role">Role</option>
+                    <option value="company">Company</option>
+                </select>
+            </label>
+            <label class="formgroup">
+            <input type="radio" ng-model="direction" name="direction" checked>ascending</label>
+            <label class="formgroup"><input type="radio" ng-model="direction" name="direction" value ="reverse">desending</label>
 
-		</div>
-		<ul class="joblist">
-			<li class="job cf" ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction">&lt;!&ndash; | limitTo: 3 &ndash;&gt;
-			<a href="#/details/{{joblist.indexOf(item)}}">
-				&lt;!&ndash; <img ng-src="images/{{item.company}}.jpg" alt="Photo of {{item.company}}"> &ndash;&gt;
-				<div class='info'> &lt;!&ndash; | uppercase'> &ndash;&gt;
-					<h2>{{item.title}}</h2>
-					<h3>{{item.description}}</h3>
-				</div>
-			</a>
-			</li>
-		</ul>
-		</div>
-	</div>
-	&lt;!&ndash; test hardcode data from single variable
-	<h1>{{message.name}}</h1>
-	<p>{{message.title + ',' + message.company}} </p>
-	&ndash;&gt;
+        </div>
+        <ul class="joblist">
+            <li class="job cf" ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction">&lt;!&ndash; | limitTo: 3 &ndash;&gt;
+            <a href="#/details/{{joblist.indexOf(item)}}">
+                &lt;!&ndash; <img ng-src="images/{{item.company}}.jpg" alt="Photo of {{item.company}}"> &ndash;&gt;
+                <div class='info'> &lt;!&ndash; | uppercase'> &ndash;&gt;
+                    <h2>{{item.title}}</h2>
+                    <h3>{{item.description}}</h3>
+                </div>
+            </a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    &lt;!&ndash; test hardcode data from single variable
+    <h1>{{message.name}}</h1>
+    <p>{{message.title + ',' + message.company}} </p>
+    &ndash;&gt;
 </div>
 -->

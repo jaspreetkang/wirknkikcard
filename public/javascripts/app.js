@@ -1,16 +1,16 @@
 var myApp = angular.module('myApp',[
-	'ngRoute', // take care of deep linking
-	'ngGeolocation',
+    'ngRoute', // take care of deep linking
+    'ngGeolocation',
     'ngCookies',
     'pascalprecht.translate', // angular-translate
     'tmh.dynamicLocale', // angular-dynamic-locale
-	'ui.bootstrap',
-	'joblistControllers', // javascript that is going to handle this module
+    'ui.bootstrap',
+    'joblistControllers', // javascript that is going to handle this module
     'translateDirectives',
     'jobServices',
     'localeServices',
     'locationServices'
-	])
+    ])
     .constant('LOCALES', {
         'locales': {
             'en_US': 'English',
@@ -21,34 +21,34 @@ var myApp = angular.module('myApp',[
     });
 
 myApp.config(['$routeProvider', function($routeProvider){
-	$routeProvider.
-	when('/list', {
-		templateUrl: 'partials/list.html',
-		controller: 'ListController'
-	}).
-	when('/details/:itemId', {
-		templateUrl: 'partials/details.html',
-		controller: 'DetailsController'
-	}).
-	when('/list/:message', {
-		templateUrl: 'partials/message.html',
-		controller: 'ModalMessageController'
-	}).
-	when('/list/:category', {
-		templateUrl: 'partials/categories.html',
-		controller: 'CategoriesController'
-	}).
-	when('/list/:location', {
-		templateUrl: 'partials/locations.html',
-		controller: 'LocationsController'
-	}).
+    $routeProvider.
+    when('/list', {
+        templateUrl: 'partials/list.html',
+        controller: 'ListController'
+    }).
+    when('/details/:itemId', {
+        templateUrl: 'partials/details.html',
+        controller: 'DetailsController'
+    }).
+    when('/list/:message', {
+        templateUrl: 'partials/message.html',
+        controller: 'ModalMessageController'
+    }).
+    when('/list/:category', {
+        templateUrl: 'partials/categories.html',
+        controller: 'CategoriesController'
+    }).
+    when('/list/:location', {
+        templateUrl: 'partials/locations.html',
+        controller: 'LocationsController'
+    }).
     when('/search', {
         templateUrl: 'partials/search.html',
         controller: 'SearchController'
     }).
-	otherwise({
-		redirectTo: '/list'
-	});
+    otherwise({
+        redirectTo: '/list'
+    });
 }]);
 
 myApp.config(['$translateProvider', function($translateProvider) {
