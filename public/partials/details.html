@@ -1,12 +1,12 @@
 <div class="job-header" style="background-image: url('{{joblist[whichItem].cover_images[0]}}');">
-    <div class="container">
+    <div>
         <!-- BACK ARROW -->
-        <div class="row back-icon">
+        <div class="back-icon">
             <!--<a href="#/list#item_{{whichItem}}"><i class="fa fa-chevron-left"></i><span>Back</span></a>-->
             <a href="#" onclick="window.history.back()"><i class="fa fa-chevron-left"></i><span>Back</span></a>
         </div>
         <!-- JOB INFO BAR -->
-        <div class="row">
+        <div>
             <div class="col-md-12 job-header-text" ng-model="joblist">
                 <div class="job-header-title">{{joblist[whichItem].title}}</div>
                 <div class="lightweight">

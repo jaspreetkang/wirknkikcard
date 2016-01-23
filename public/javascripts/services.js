@@ -22,7 +22,6 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
             self.cache.put('jobs', response.data);
             defer.resolve(response.data);
         }, function(response) {
-            console.log(response);
             defer.reject();
         });
 
@@ -165,7 +164,6 @@ locationServices.service('LocationService', ['$q', '$geolocation', function($q, 
                     longitude: position.coords.longitude
                 });
             }, function(position) {
-                console.log(position);
                 defer.reject(position);
             });
         }

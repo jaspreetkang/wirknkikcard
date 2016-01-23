@@ -1,12 +1,10 @@
 /*controller -routing*/
 var joblistControllers = angular.module('joblistControllers',[]);
-console.log("Controller");
 
 joblistControllers.controller('ListController', ['$scope', 'JobService', 'LocationService', function($scope, JobService, LocationService){
 
     var coordinates = LocationService.getCoordinates().then(function(coords) {
         JobService.getData(coords.latitude, coords.longitude, '').then(function onSuccess(data) {
-            console.log(data);
             $scope.joblist = data;
             $scope.jobOrder = 'title';
         }, function onError(response) {
