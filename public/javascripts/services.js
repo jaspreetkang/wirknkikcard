@@ -1,39 +1,69 @@
 var jobServices = angular.module('jobServices', []);
 
 jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, $http, $cacheFactory) {
+    var city = '';
     this.cache = $cacheFactory('jobData');
     var self = this;
 
-    return {
-        getData: function(lat, lon, searchTerm) {
-            var defer = $q.defer();
-            lat = lat.toFixed(3);
-            lon = lon.toFixed(3);
-            //searchTerm = '';
-            if (lat == self.latitude && lon == self.longitude && searchTerm == self.searchTerm) {
-                defer.resolve(self.cache.get('jobs'));
-                return defer.promise;
-            }
-            self.latitude = lat || '';
-            self.longitude = lon || '';
-            self.searchTerm = searchTerm || '';
-            $http.get('/getData?lat=' + self.latitude + '&lon=' + self.longitude + '&q=' + self.searchTerm)
-            .then(function(response) {
-                self.cache.put('jobs', response.data);
-                defer.resolve(response.data);
-            }, function(response) {
-                console.log(response);
-                defer.reject();
-            });
-
-            return defer.promise;
-        },
-
-        getDetails: function() {
-            var defer = $q.defer();
+    var getData = function(lat, lon, searchTerm) {
+        var defer = $q.defer();
+        lat = lat.toFixed(3);
+        lon = lon.toFixed(3);
+        //searchTerm = '';
+        if (lat == self.latitude && lon == self.longitude && searchTerm == self.searchTerm) {
             defer.resolve(self.cache.get('jobs'));
             return defer.promise;
         }
+        self.latitude = lat || '';
+        self.longitude = lon || '';
+        self.searchTerm = searchTerm || '';
+        $http.get('/getData?lat=' + self.latitude + '&lon=' + self.longitude + '&q=' + self.searchTerm)
+        .then(function(response) {
+            self.cache.put('jobs', response.data);
+            defer.resolve(response.data);
+        }, function(response) {
+            console.log(response);
+            defer.reject();
+        });
+
+        return defer.promise;
+    }
+
+    var getDetails = function() {
+        var defer = $q.defer();
+        defer.resolve(self.cache.get('jobs'));
+        return defer.promise;
+    }
+
+    var getCity = function(lat, lon) {
+        var defer = $q.defer();
+        if (!city) {
+            $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + "," + lon).then(function(response) {
+                var results = response.data.results;
+                for (var i = 0; i < results[0]['address_components'].length; i++) {
+                    for (var b = 0; b < results[0]['address_components'][i]['types'].length; b++) {
+                        if (results[0]['address_components'][i]['types'][b] == "locality") {
+                            city = results[0]['address_components'][i].long_name;
+                            break;
+                        }
+                    }
+                }
+                defer.resolve(city);
+            }, function(response) {
+                defer.reject(response);
+            });
+        }
+        else {
+            defer.resolve(city);
+        }
+
+        return defer.promise;
+    }
+
+    return {
+        getData: getData,
+        getDetails: getDetails,
+        getCity: getCity
     };
 }]);
 

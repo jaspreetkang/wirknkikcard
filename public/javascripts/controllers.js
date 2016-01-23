@@ -2,15 +2,21 @@
 var joblistControllers = angular.module('joblistControllers',[]);
 console.log("Controller");
 
-joblistControllers.controller('ListController', ['$scope', '$http', '$geolocation', 'JobService', 'LocationService', function($scope, $http, $geolocation, JobService, LocationService){
+joblistControllers.controller('ListController', ['$scope', 'JobService', 'LocationService', function($scope, JobService, LocationService){
 
     var coordinates = LocationService.getCoordinates().then(function(coords) {
-        console.log(coords);
         JobService.getData(coords.latitude, coords.longitude, '').then(function onSuccess(data) {
+            console.log(data);
             $scope.joblist = data;
             $scope.jobOrder = 'title';
         }, function onError(response) {
             $scope.error = "failed to get data";        
+        });
+
+        JobService.getCity(coords.latitude, coords.longitude).then(function(city) {
+            $scope.city = city;
+        }, function(response) {
+            console.log(response);
         });
     });
 }]);
