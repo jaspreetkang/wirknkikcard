@@ -29,8 +29,8 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
         window.scrollTo(0, 0);
     });
 
-    JobService.getDetails().then(function(data) {
-        var job = data[$routeParams.itemId];
+    JobService.getDetails($routeParams.itemId).then(function(data) {
+        var job = data;
         $scope.job = job;
     }, function(reason) {
         $scope.error = "failed to get data";        

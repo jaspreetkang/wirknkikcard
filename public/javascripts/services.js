@@ -5,32 +5,67 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
     this.cache = $cacheFactory('jobData');
     var self = this;
 
+    var fetchData = function(url, cacheKey, condition) {
+        if (typeof condition === 'undefined') {
+            condition = true;
+        }
+
+        var defer = $q.defer();
+
+        var cachedData = self.cache.get(cacheKey);
+
+        if (cachedData && condition) {
+            defer.resolve(cachedData);
+        }
+        else {
+            $http.get(url).then(function(response) {
+                self.cache.put(cacheKey, response);
+                defer.resolve(response);
+            }, function(response) {
+                defer.reject(response);
+            });
+        }
+
+        return defer.promise;
+    }
+
     var getData = function(lat, lon, searchTerm) {
         var defer = $q.defer();
+
         lat = lat.toFixed(3);
         lon = lon.toFixed(3);
-        //searchTerm = '';
-        if (lat == self.latitude && lon == self.longitude && searchTerm == self.searchTerm) {
-            defer.resolve(self.cache.get('jobs'));
-            return defer.promise;
-        }
+
+        var cacheKey = 'jobs';
+        var condition = lat == self.latitude && lon == self.longitude && searchTerm == self.searchTerm;
+
         self.latitude = lat || '';
         self.longitude = lon || '';
         self.searchTerm = searchTerm || '';
-        $http.get('/getData?lat=' + self.latitude + '&lon=' + self.longitude + '&q=' + self.searchTerm)
+
+        var url = '/getJobs?lat=' + self.latitude + '&lon=' + self.longitude + '&q=' + self.searchTerm;
+
+        fetchData(url, cacheKey, condition)
         .then(function(response) {
-            self.cache.put('jobs', response.data);
             defer.resolve(response.data);
         }, function(response) {
-            defer.reject();
+            defer.reject(response);
         });
 
         return defer.promise;
     }
 
-    var getDetails = function() {
+    var getDetails = function(id) {
         var defer = $q.defer();
-        defer.resolve(self.cache.get('jobs'));
+
+        var url = '/getJobs/' + id;
+        var cacheKey = 'jobid-' + id;
+
+        fetchData(url, cacheKey).then(function(response) {
+            defer.resolve(response.data);
+        }, function(reponse) {
+            defer.reject(response);
+        });
+
         return defer.promise;
     }
 

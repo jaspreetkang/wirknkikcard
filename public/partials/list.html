@@ -25,7 +25,7 @@
             <input type="text" name="search" id="search" placeholder="{{'partials.list.Filter' | translate}}" class="search" ng-model="query"/>
         </div>
         <div ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction" id="item_{{joblist.indexOf(item)}}"><!-- | limitTo: 3 -->
-            <a href="#/details/{{joblist.indexOf(item)}}"  >
+            <a href="#/details/{{item._id}}"  >
                 <div class="col-md-12 job-box">
                     <div class="data-text">
                         <div class="title">{{item.title}}</div>
