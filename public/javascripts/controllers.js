@@ -1,4 +1,3 @@
-/*controller -routing*/
 var joblistControllers = angular.module('joblistControllers',[]);
 
 joblistControllers.controller('ListController', ['$scope', '$routeParams', 'JobService', 'LocationService', function($scope, $routeParams, JobService, LocationService){
@@ -7,14 +6,15 @@ joblistControllers.controller('ListController', ['$scope', '$routeParams', 'JobS
 
     var searchTerm = '';
     if ($routeParams.searchTerm) {
-        console.log($routeParams.searchTerm);
-        searchTerm = $routeParams.searchTerm;
+        searchTerm = $scope.searchTerm = $routeParams.searchTerm;
+        $scope.searchTermVisible = true;
     }
 
     var coordinates = LocationService.getCoordinates().then(function(coords) {
         JobService.getData(coords.latitude, coords.longitude, searchTerm).then(function onSuccess(data) {
             $scope.joblist = data;
             $scope.jobOrder = 'title';
+            $('.pre-load').remove();
         }, function onError(response) {
             $scope.error = "failed to get data";        
         });

@@ -20,6 +20,13 @@
     font-size: 1.1em;
 }
 
+.page-list .search-term-close {
+    color: #666;
+    font-size: 1.8em;
+    top: 2px;
+    position: relative;
+}
+
 .page-search .search {
     width: 100%
 }

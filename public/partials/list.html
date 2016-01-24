@@ -10,16 +10,32 @@
         </div>
     </div>
 </nav>
-<!-- Kik Convo Test -->
-<div class="offset" id="top-bar">
+<div class="offset" id="top-bar"></div>
+<div ng-if="searchTermVisible">
+    <div class="offset-short"></div>
+    <div class="filter">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <b>{{"partials.list.SearchTerm" | translate}}</b>: {{searchTerm}} 
+                    <a href="#/list" class="pull-right">
+                        <span class="fa fa-times-circle search-term-close" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+   </div>
 </div>
 <div class="container">
     <div class="row scroll">
         <div class="col-md-12 data-box">
             <input type="text" name="search" id="search" placeholder="{{'partials.list.Filter' | translate}}" class="search" ng-model="query"/>
         </div>
+        <div class='text-center pre-load'>
+            <img ng-src="/images/graphic.svg" style="margin-top:30px;">
+        </div>
         <div ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction" id="item_{{joblist.indexOf(item)}}"><!-- | limitTo: 3 -->
-            <a href="#/details/{{item._id}}"  >
+            <a href="#/details/{{item._id}}">
                 <div class="col-md-12 job-box">
                     <div class="data-text">
                         <div class="title">{{item.title}}</div>

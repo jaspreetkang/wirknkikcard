@@ -1,7 +1,8 @@
 {
     "partials.list.JobsIn": "Jobs In",
     "partials.list.Search": "Search",
-    "partials.list.Filter": "Filter Results",
+    "partials.list.Filter": "Filter These Results",
+    "partials.list.SearchTerm": "Search Term",
 
     "partials.search.SearchJobs": "Search Jobs",
     "partials.search.Categories": "CATEGORIES",
