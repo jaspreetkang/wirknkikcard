@@ -4,8 +4,8 @@
             <div class="col-xs-3"><img class="kik-wirkn-logo" ng-src="images/wirkn-logo-icon.png" alt="Wirkn logo icon" /></div>
             <div class="col-xs-6">{{"partials.list.JobsIn" | translate}} <span class="in-city"> {{city}}</span></div>
             <div class="col-xs-3">
-                <a href="#/search" class="pull-right"><i class="fa fa-search header-icons"></i></a>
-                <a href="#/list" class="pull-right"><i class="fa fa-map-marker header-icons"></i></a>
+                <a href="#/{{currentLocale}}/search" class="pull-right"><i class="fa fa-search header-icons"></i></a>
+                <a href="#/{{currentLocale}}/list" class="pull-right"><i class="fa fa-map-marker header-icons"></i></a>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <b>{{"partials.list.SearchTerm" | translate}}</b>: {{searchTerm}} 
-                    <a href="#/list" class="pull-right">
+                    <a href="#/{{currentLocale}}/list" class="pull-right">
                         <span class="fa fa-times-circle search-term-close" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -35,7 +35,7 @@
             <img ng-src="/images/graphic.svg" style="margin-top:30px;">
         </div>
         <div ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction" id="item_{{joblist.indexOf(item)}}"><!-- | limitTo: 3 -->
-            <a href="#/details/{{item._id}}">
+            <a href="#/{{currentLocale}}/details/{{item._id}}">
                 <div class="col-md-12 job-box">
                     <div class="data-text">
                         <div class="title">{{item.title}}</div>

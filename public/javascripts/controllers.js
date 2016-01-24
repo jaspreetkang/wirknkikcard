@@ -1,8 +1,11 @@
 var joblistControllers = angular.module('joblistControllers',[]);
 
-joblistControllers.controller('ListController', ['$scope', '$routeParams', 'JobService', 'LocationService', function($scope, $routeParams, JobService, LocationService){
+joblistControllers.controller('ListController', ['$scope', '$routeParams', 'JobService', 'LocationService', 'LocaleService', function($scope, $routeParams, JobService, LocationService, LocaleService){
 
     $scope.pageClass = 'page-list';
+
+    LocaleService.setLocale($routeParams.locale);
+    $scope.currentLocale = LocaleService.getLocale();
 
     var searchTerm = '';
     if ($routeParams.searchTerm) {
@@ -27,9 +30,12 @@ joblistControllers.controller('ListController', ['$scope', '$routeParams', 'JobS
     });
 }]);
 
-joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'JobService', function($scope, $routeParams, JobService) {
+joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'JobService', 'LocaleService', function($scope, $routeParams, JobService, LocaleService) {
 
     $scope.pageClass = 'page-details';
+
+    LocaleService.setLocale($routeParams.locale);
+    $scope.currentLocale = LocaleService.getLocale();
 
     $scope.$on('$routeChangeSuccess', function(e, currentRoute, previousRoute) {
         window.scrollTo(0, 0);
@@ -73,9 +79,12 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
     };
 }]);
 
-joblistControllers.controller('SearchController', ['$scope', 'JobService', function($scope, JobService) {
+joblistControllers.controller('SearchController', ['$scope', '$routeParams', 'JobService', 'LocaleService', function($scope, $routeParams, JobService, LocaleService) {
 
     $scope.pageClass = 'page-search';
+
+    LocaleService.setLocale($routeParams.locale);
+    $scope.currentLocale = LocaleService.getLocale();
 
     $scope.$on('$routeChangeSuccess', function(e, currentRoute, previousRoute) {
         window.scrollTo(0, 0);

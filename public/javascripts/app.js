@@ -15,29 +15,29 @@ var myApp = angular.module('myApp',[
     ])
     .constant('LOCALES', {
         'locales': {
-            'en_US': 'English',
-            'fr_CA': 'French',
-            'ru_RU': 'Russian'
+            'en': 'English',
+            'fr': 'French',
+            'ru': 'Russian'
         },
-        'preferredLocale': 'fr_CA'
+        'preferredLocale': 'en'
     });
 
-myApp.config(['$routeProvider', function($routeProvider){
+myApp.config(['$routeProvider', 'LOCALES', function($routeProvider, LOCALES){
     $routeProvider.
-    when('/list/:searchTerm?', {
+    when('/:locale/list/:searchTerm?', {
         templateUrl: 'partials/list.html',
         controller: 'ListController'
     }).
-    when('/details/:itemId', {
+    when('/:locale/details/:itemId', {
         templateUrl: 'partials/details.html',
         controller: 'DetailsController'
     }).
-    when('/search', {
+    when('/:locale/search', {
         templateUrl: 'partials/search.html',
         controller: 'SearchController'
     }).
     otherwise({
-        redirectTo: '/list'
+        redirectTo: '/' + LOCALES.preferredLocale + '/list'
     });
 }]);
 
@@ -57,3 +57,4 @@ myApp.config(['$translateProvider', function($translateProvider) {
 myApp.config(['tmhDynamicLocaleProvider', function(tmhDynamicLocaleProvider) {
     tmhDynamicLocaleProvider.localeLocationPattern('vendor/angular-i18n/angular-locale_{{locale}}.js');
 }]);
+

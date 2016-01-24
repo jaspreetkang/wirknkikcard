@@ -159,6 +159,12 @@ localeServices.service('LocaleService', ['$translate', 'LOCALES', '$rootScope', 
         },
         getLocalesDisplayNames: function () {
             return _LOCALES_DISPLAY_NAMES;
+        },
+        setLocale: function(locale) {
+            setLocale(locale);
+        },
+        getLocale: function() {
+            return currentLocale;
         }
     };
 }]);
