@@ -27,7 +27,7 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
         }
 
         return defer.promise;
-    }
+    };
 
     var getData = function(lat, lon, searchTerm) {
         var defer = $q.defer();
@@ -55,7 +55,7 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
         });
 
         return defer.promise;
-    }
+    };
 
     var getDetails = function(id) {
         var defer = $q.defer();
@@ -70,17 +70,17 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
         });
 
         return defer.promise;
-    }
+    };
 
     var getCity = function(lat, lon) {
         var defer = $q.defer();
         if (!city) {
             $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + "," + lon).then(function(response) {
                 var results = response.data.results;
-                for (var i = 0; i < results[0]['address_components'].length; i++) {
-                    for (var b = 0; b < results[0]['address_components'][i]['types'].length; b++) {
-                        if (results[0]['address_components'][i]['types'][b] == "locality") {
-                            city = results[0]['address_components'][i].long_name;
+                for (var i = 0; i < results[0].address_components.length; i++) {
+                    for (var b = 0; b < results[0].address_components[i].types.length; b++) {
+                        if (results[0].address_components[i].types[b] == "locality") {
+                            city = results[0].address_components[i].long_name;
                             break;
                         }
                     }
@@ -95,7 +95,7 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
         }
 
         return defer.promise;
-    }
+    };
 
     return {
         getData: getData,
@@ -161,7 +161,7 @@ localeServices.service('LocaleService', ['$translate', 'LOCALES', '$rootScope', 
             return _LOCALES_DISPLAY_NAMES;
         }
     };
-}])
+}]);
 
 var locationServices = angular.module('locationServices', []);
 
@@ -185,10 +185,10 @@ locationServices.service('LocationService', ['$q', '$geolocation', function($q, 
         });
 
         return defer.promise;
-    }
+    };
 
     var getCoordinates = function() {
-        var defer = $q.defer()
+        var defer = $q.defer();
         if (locationIsInitialized) {
             defer.resolve({
                 latitude: latitude,

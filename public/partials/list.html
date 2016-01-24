@@ -36,41 +36,4 @@
         </div>
     </div>
 </div>
-<!--
-<div class="container">
-    <div class="row scroll">
-        <div class="jscroll-inner">
-        <div class="col-md-12 data-box">
-            <h1>Job List</h1>
-            <label>search:</label>
-            <input ng-model="query" placeholder="Search for jobs" autofocus>
-            <label class="formgroup">by:
-                <select ng-model="jobOrder">
-                    <option value="role">Role</option>
-                    <option value="company">Company</option>
-                </select>
-            </label>
-            <label class="formgroup">
-            <input type="radio" ng-model="direction" name="direction" checked>ascending</label>
-            <label class="formgroup"><input type="radio" ng-model="direction" name="direction" value ="reverse">desending</label>
 
-        </div>
-        <ul class="joblist">
-            <li class="job cf" ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction">&lt;!&ndash; | limitTo: 3 &ndash;&gt;
-            <a href="#/details/{{joblist.indexOf(item)}}">
-                &lt;!&ndash; <img ng-src="images/{{item.company}}.jpg" alt="Photo of {{item.company}}"> &ndash;&gt;
-                <div class='info'> &lt;!&ndash; | uppercase'> &ndash;&gt;
-                    <h2>{{item.title}}</h2>
-                    <h3>{{item.description}}</h3>
-                </div>
-            </a>
-            </li>
-        </ul>
-        </div>
-    </div>
-    &lt;!&ndash; test hardcode data from single variable
-    <h1>{{message.name}}</h1>
-    <p>{{message.title + ',' + message.company}} </p>
-    &ndash;&gt;
-</div>
--->
