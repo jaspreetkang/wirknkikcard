@@ -3,6 +3,8 @@
     "partials.list.Search": "Search",
     "partials.list.Filter": "Filter Results",
 
+    "partials.search.SearchJobs": "Search Jobs",
+    "partials.search.Categories": "CATEGORIES",
     "partials.search.Food": "Food",
     "partials.search.CoffeeShops": "Coffee Shops",
     "partials.search.Bartender": "Bartender",

@@ -27,7 +27,6 @@
   z-index: 100;
 }
 
-/*
 .view-frame.ng-leave {
   -webkit-animation: 0.5s fadeOut;
   -moz-animation: 0.5s fadeOut;
@@ -35,7 +34,6 @@
   animation: 0.5s fadeOut;
   z-index:99;
 }
-*/
 
 /* fade-in */
 @keyframes fadeIn {

@@ -84,39 +84,48 @@ joblistControllers.controller('SearchController', ['$scope', 'JobService', funct
     $scope.categories = [
         {
             name: "partials.search.Food",
-            term: "food"
+            term: "food",
+            image: "restaurant"
         },
         {
             name: "partials.search.CoffeeShops",
-            term: "coffee+shops"
+            term: "coffee+shops",
+            image: "coffee"
         },
         {
             name: "partials.search.Bartender",
-            term: "bartender"
+            term: "bartender",
+            image: "bartending"
         },
         {
             name: "partials.search.Nightlife",
-            term: "nightlife"
+            term: "nightlife",
+            image: "nightlife"
         },
         {
             name: "partials.search.Cashier",
-            term: "cashier"
+            term: "cashier",
+            image: "cashier"
         },
         {
             name: "partials.search.Hospitality",
-            term: "hospitality"
+            term: "hospitality",
+            image: "hospitality"
         },
         {
             name: "partials.search.CustomerSupport",
-            term: "customer+support"
+            term: "customer+support",
+            image: "customer_service"
         },
         {
             name: "partials.search.Business",
-            term: "business"
+            term: "business",
+            image: "business"
         },
         {
             name: "partials.search.Merchandising",
-            term: "merchandising"
+            term: "merchandising",
+            image: "merchandising"
         }
     ];
 }]);

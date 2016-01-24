@@ -1,7 +1,22 @@
+<nav class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8"><i class="fa fa-search header-icons"></i> {{"partials.search.SearchJobs" | translate}}</div>
+            <div class="col-xs-4">
+                <a href="#" onclick="history.back()" class="pull-right"><i class="fa fa-times-circle header-icons"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="top-bar" class="offset"></div>
 <div>
     <ul>
-        <li ng-repeat="item in categories">
-            <a href="#/list/{{item.term}}">{{item.name | translate}}</a>
+        <li class="search-term"><p class="search-label">{{"partials.search.Categories" | translate}}</p></li>
+        <li ng-repeat="item in categories" class="search-term">
+            <a href="#/list/{{item.term}}">
+                <img class="search-image" ng-src="/images/svgs/{{item.image}}.svg" alt="">
+                <span class="search-name">{{item.name | translate}}</span>
+            </a>
         </li>
     </ul>
 </div>

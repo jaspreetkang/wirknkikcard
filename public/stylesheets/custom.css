@@ -20,6 +20,51 @@
     font-size: 1.1em;
 }
 
+.page-search .search {
+    width: 100%
+}
+
+.page-search .search-image {
+    height: 40px;
+    width: 40px;
+}
+
+.page-search .search-name {
+    vertical-align: middle;
+    margin-left: 15px;
+}
+
+.page-search ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page-search ul li a {
+    color: #666666;
+}
+
+.page-search ul li a:visited {
+    color: #666666;
+}
+
+.page-search ul li a:hover {
+    color: #666666;
+}
+
+.page-search .search-label {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.page-search .search-term {
+    height: 61px;
+    padding: 10px;
+    border-top: 1px #e3e3e3 solid;
+    background-color: white;
+}
+
 @media screen and (max-width: 600px) {
     .hidden-xxs {
         display: none;
