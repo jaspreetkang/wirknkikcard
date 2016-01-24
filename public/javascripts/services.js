@@ -35,8 +35,8 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
         lat = lat.toFixed(3);
         lon = lon.toFixed(3);
 
-        var cacheKey = 'jobs';
-        var condition = lat == self.latitude && lon == self.longitude && searchTerm == self.searchTerm;
+        var cacheKey = 'jobs-' + searchTerm;
+        var condition = lat == self.latitude && lon == self.longitude;
 
         self.latitude = lat || '';
         self.longitude = lon || '';
