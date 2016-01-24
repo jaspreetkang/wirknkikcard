@@ -1,4 +1,4 @@
-<div class="job-header" style="background-image: url('{{joblist[whichItem].cover_images[0]}}');">
+<div class="job-header" style="background-image: url('{{job.cover_images[0]}}');">
     <div>
         <!-- BACK ARROW -->
         <div class="back-icon">
@@ -7,10 +7,10 @@
         <!-- JOB INFO BAR -->
         <div>
             <div class="col-md-12 job-header-text" ng-model="joblist">
-                <div class="job-header-title">{{joblist[whichItem].title}}</div>
+                <div class="job-header-title">{{job.title}}</div>
                 <div class="lightweight">
-                    {{joblist[whichItem].employer.name}}<br>
-                    <i class="fa fa-map-marker"></i> {{joblist[whichItem].location.address}},{{joblist[whichItem].location.city}},{{joblist[whichItem].location.province}}
+                    {{job.employer.name}}<br>
+                    <i class="fa fa-map-marker"></i> {{job.location.address}},{{job.location.city}},{{job.location.province}}
                 </div>
             </div>
         </div>
@@ -24,21 +24,21 @@
                     ROLE
                 </div>
                 <div class="col-md-12">
-                    {{joblist[whichItem].title}} at {{joblist[whichItem].employer.name}}
+                    {{job.title}} at {{job.employer.name}}
                 </div>
                 <br>
                 <div class="col-md-12 job-body-heading">
                     JOB TYPE
                 </div>
                 <div class="col-md-12">
-                    {{joblist[whichItem].employment_type}}
+                    {{job.employment_type}}
                 </div>
                 <br>
                 <div class="col-md-12 job-body-heading">
                     LOCATION
                 </div>
                 <div class="col-md-12">
-                    <a class="underline" href="http://maps.google.com/?q={{joblist[whichItem].location.address}}">{{joblist[whichItem].location.address}},{{joblist[whichItem].location.city}},{{joblist[whichItem].location.province}}</a>
+                    <a class="underline" href="http://maps.google.com/?q={{job.location.address}}">{{job.location.address}},{{job.location.city}},{{job.location.province}}</a>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                     JOB DETAILS
                 </div>
                 <div class="col-md-12">
-                    <pre>{{joblist[whichItem].description}}</pre>
+                    <pre>{{job.description}}</pre>
                 </div>
             </div>
         </div>
@@ -64,25 +64,10 @@
                     <span class="lightweight">Create a Wirkn video application!</span>
                 </div>
 
-                <a class="quick-apply-link" href="http://wirkn.com/download-job#r:217662295302536190">
+                <a class="quick-apply-link" ng-click="applyNow()">
                     <button id="kik_branch_button" class="quick-apply-btn">APPLY NOW</button>
                 </a>            </div>
         </div>
     </div>
 </div>
 
-<!--
-<section class='jobdetail'>
-    <div class="job cf" ng-model="joblist">
-    <a href="#/details/{{prevItem}}"class="btn btn-left">&lt; prev </a>
-    <a href="#/details/{{nextItem}}"class="btn btn-left">&gt; next</a>
-        <h1>{{joblist[whichItem].title}}</h1>
-        <div class="info">
-            <h3>{{joblist[whichItem].employer.name}}</h3>
-
-            &lt;!&ndash; <img ng-src="images/{{joblist[whichItem].company}}.jpg" alt="Photo of {{joblist[whichItem].company}}"> &ndash;&gt;
-            <div class='desc'>{{joblist[whichItem].location.address}}</div>
-        </div>
-    </div>
-    <a href="#/list">&laquo; Back to Search</a>
-</section>-->

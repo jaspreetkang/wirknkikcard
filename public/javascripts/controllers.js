@@ -29,22 +29,39 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
         window.scrollTo(0, 0);
     });
 
-    JobService.getDetails().then(function(data) {
-        $scope.joblist = data;
-        $scope.whichItem = $routeParams.itemId;
-        if ($routeParams.itemId > 0) {
-            $scope.prevItem = Number($routeParams.itemId)-1;
-        }
-        else {
-            $scope.prevItem = $scope.joblist.length - 1;
-        }
+    branch.init("key_live_nmllYe7xNU5DUy340KNxMenagcpeaP95", function(err, data) {
+        console.log(data);
+        console.log(err);
+    });
 
-        if ($routeParams.itemId < $scope.joblist.length - 1) {
-            $scope.nextItem = Number($routeParams.itemId) + 1;
-        }
-        else {
-            $scope.nextItem = 0;
-        }       
+    $scope.applyNow = function() {
+        branch.link({
+            channel: 'kik_card',
+            campaign: 'personality_quiz',
+            stage: 'view publicjob',
+            data: {
+                '$always_deeplink': true,
+                '$desktop_url': 'http://wirkn.com/download-job',
+                '$after_click_url': '',
+                'employer': $scope.job.employer.name,
+                'title': $scope.job.title,
+                'location': $scope.job.employer.name,
+                'referral_type': "employer",
+                'referred_object_id': $scope.job._id,
+                'type': "job",
+                'data': $scope.job._id,
+                'kik_username': "",
+                'alias_id': ""
+            }
+        }, function(err, link) {
+            //$scope.quickApplyLink = link;
+            window.location.replace(link);
+        });      
+    }
+
+    JobService.getDetails().then(function(data) {
+        var job = data[$routeParams.itemId];
+        $scope.job = job;
     }, function(reason) {
         $scope.error = "failed to get data";        
     });
