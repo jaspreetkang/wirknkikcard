@@ -48,7 +48,8 @@
                     JOB DETAILS
                 </div>
                 <div class="col-md-12">
-                    <pre>{{job.description}}</pre>
+                    <pre ng-bind-html="job.description"></pre>
+                    <!--<div ng-bind-html="job.description"></div>-->
                 </div>
             </div>
         </div>

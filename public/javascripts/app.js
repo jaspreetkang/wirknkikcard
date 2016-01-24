@@ -2,6 +2,7 @@ var myApp = angular.module('myApp',[
     'ngRoute', // take care of deep linking
     'ngGeolocation',
     'ngCookies',
+    'ngSanitize',
     'pascalprecht.translate', // angular-translate
     'tmh.dynamicLocale', // angular-dynamic-locale
     'ui.bootstrap',

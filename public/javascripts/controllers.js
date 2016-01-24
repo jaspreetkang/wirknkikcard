@@ -29,6 +29,13 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
         window.scrollTo(0, 0);
     });
 
+    JobService.getDetails().then(function(data) {
+        var job = data[$routeParams.itemId];
+        $scope.job = job;
+    }, function(reason) {
+        $scope.error = "failed to get data";        
+    });
+
     branch.init("key_live_nmllYe7xNU5DUy340KNxMenagcpeaP95", function(err, data) {
         console.log(data);
         console.log(err);
@@ -58,13 +65,6 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
             window.location.replace(link);
         });      
     }
-
-    JobService.getDetails().then(function(data) {
-        var job = data[$routeParams.itemId];
-        $scope.job = job;
-    }, function(reason) {
-        $scope.error = "failed to get data";        
-    });
 }]);
 
 joblistControllers.controller('SearchController', ['$scope', 'JobService', function($scope, JobService) {
