@@ -11,9 +11,16 @@ router.get('/', function(req, res, next) {
 
 /* GET ajax request for data */
 router.get('/getJobs', function(req, res, next) {
-    var lat = req.param('lat');
-    var lon = req.param('lon');
-    request(baseUrl + '?lat=' + lat + '&lon=' + lon + '&radius=25000&limit=600&offset=00&expired=false', function (error, response, body) {
+    var lat = req.query.lat;
+    var lon = req.query.lon;
+    var searchTerm = req.query.q;
+
+    var url = baseUrl + '?lat=' + lat + '&lon=' + lon + '&radius=25000&limit=600&offset=00&expired=false';
+    if (searchTerm) {
+        url += '&q=' + searchTerm;
+    }
+
+    request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             res.send(body);
         }

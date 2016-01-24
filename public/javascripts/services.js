@@ -42,7 +42,10 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
         self.longitude = lon || '';
         self.searchTerm = searchTerm || '';
 
-        var url = '/getJobs?lat=' + self.latitude + '&lon=' + self.longitude + '&q=' + self.searchTerm;
+        var url = '/getJobs?lat=' + self.latitude + '&lon=' + self.longitude;
+        if (self.searchTerm.length > 0) {
+            url += '&q=' + self.searchTerm;
+        }
 
         fetchData(url, cacheKey, condition)
         .then(function(response) {

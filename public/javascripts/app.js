@@ -24,25 +24,13 @@ var myApp = angular.module('myApp',[
 
 myApp.config(['$routeProvider', function($routeProvider){
     $routeProvider.
-    when('/list', {
+    when('/list/:searchTerm?', {
         templateUrl: 'partials/list.html',
         controller: 'ListController'
     }).
     when('/details/:itemId', {
         templateUrl: 'partials/details.html',
         controller: 'DetailsController'
-    }).
-    when('/list/:message', {
-        templateUrl: 'partials/message.html',
-        controller: 'ModalMessageController'
-    }).
-    when('/list/:category', {
-        templateUrl: 'partials/categories.html',
-        controller: 'CategoriesController'
-    }).
-    when('/list/:location', {
-        templateUrl: 'partials/locations.html',
-        controller: 'LocationsController'
     }).
     when('/search', {
         templateUrl: 'partials/search.html',

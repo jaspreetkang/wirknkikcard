@@ -1,12 +1,18 @@
 /*controller -routing*/
 var joblistControllers = angular.module('joblistControllers',[]);
 
-joblistControllers.controller('ListController', ['$scope', 'JobService', 'LocationService', function($scope, JobService, LocationService){
+joblistControllers.controller('ListController', ['$scope', '$routeParams', 'JobService', 'LocationService', function($scope, $routeParams, JobService, LocationService){
 
     $scope.pageClass = 'page-list';
 
+    var searchTerm = ''
+    if ($routeParams.searchTerm) {
+        console.log($routeParams.searchTerm);
+        searchTerm = $routeParams.searchTerm;
+    }
+
     var coordinates = LocationService.getCoordinates().then(function(coords) {
-        JobService.getData(coords.latitude, coords.longitude, '').then(function onSuccess(data) {
+        JobService.getData(coords.latitude, coords.longitude, searchTerm).then(function onSuccess(data) {
             $scope.joblist = data;
             $scope.jobOrder = 'title';
         }, function onError(response) {
@@ -113,13 +119,6 @@ joblistControllers.controller('SearchController', ['$scope', 'JobService', funct
             term: "merchandising"
         }
     ];
-
-    $scope.search = function(searchTerm) {
-        console.log(searchTerm);
-        JobService.getData(43.6419, -79.3746, searchTerm).then(function(data) {
-            console.log(data);
-        });
-    }
 }]);
 
 joblistControllers.controller('ModalMessageController', ['$scope', '$routeParams', '$uibModal', '$log', function($scope, $routeParams, $uibModal, $log) {
