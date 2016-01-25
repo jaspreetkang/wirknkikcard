@@ -221,3 +221,64 @@ locationServices.service('LocationService', ['$q', '$geolocation', function($q, 
         initializeLocation: initializeLocation
     };
 }]);
+
+var modalServices = angular.module('modalServices', []);
+
+modalServices.service('ModalService', ['$uibModal', function($uibModal) {
+    
+    var modalShouldOpen = true;
+
+    var messages = {
+        "retail": {
+            "title": "partials.list.Standout.title",
+            "body": "partials.list.Standout.body",
+            "image": "/images/modal-photos/fashion.png"
+        },
+        "restaurant": {
+            "title": "partials.list.Charmer.title",
+            "body": "partials.list.Charmer.body",
+            "image": "/images/modal-photos/restaurant.png"
+        },
+        "event": {
+            "title": "partials.list.PartyAnimal.title",
+            "body": "partials.list.PartyAnimal.body",
+            "image": "/images/modal-photos/events.png"
+        },
+        "all": {
+            "title": "partials.list.Idealist.title",
+            "body": "partials.list.Idealist.body",
+            "image": "/images/modal-photos/alljobs.png"
+        }
+    };
+
+    var message = function(key) {
+        return messages[key];
+    };
+
+    var openModal = function() {
+        return modalShouldOpen;
+    }
+
+    var open = function(key, size) {
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceController',
+            size: size,
+            resolve: {
+                message: function () {
+                    return message(key);
+                }
+            }
+        });
+        modalShouldOpen = false;
+    };
+
+    return {
+        openModal: openModal,
+        message: message,
+        open: open
+    }
+}])
+

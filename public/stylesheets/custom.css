@@ -116,6 +116,10 @@
     border: none;
 }
 
+.personality-modal .modal-image {
+    width: 100%;
+}
+
 @media screen and (max-width: 600px) {
     .hidden-xxs {
         display: none;

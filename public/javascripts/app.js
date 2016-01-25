@@ -11,7 +11,8 @@ var myApp = angular.module('myApp',[
     'translateDirectives',
     'jobServices',
     'localeServices',
-    'locationServices'
+    'locationServices',
+    'modalServices'
     ])
     .constant('LOCALES', {
         'locales': {
