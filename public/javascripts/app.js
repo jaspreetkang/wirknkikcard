@@ -9,7 +9,6 @@ var myApp = angular.module('myApp',[
     'wirknAnimations',
     'joblistControllers', // javascript that is going to handle this module
     'translateDirectives',
-    'googlePlacesDirectives',
     'jobServices',
     'localeServices',
     'locationServices'
