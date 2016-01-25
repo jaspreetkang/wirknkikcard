@@ -74,7 +74,12 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
 
     var getCity = function(lat, lon) {
         var defer = $q.defer();
-        if (!city) {
+        var condition = lat == self.latitude && lon == self.longitude;
+
+        if (city && condition) {
+            defer.resolve(city);
+        }
+        else {
             $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + "," + lon).then(function(response) {
                 var results = response.data.results;
                 for (var i = 0; i < results[0].address_components.length; i++) {
@@ -89,9 +94,6 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
             }, function(response) {
                 defer.reject(response);
             });
-        }
-        else {
-            defer.resolve(city);
         }
 
         return defer.promise;

@@ -9,6 +9,7 @@ var myApp = angular.module('myApp',[
     'wirknAnimations',
     'joblistControllers', // javascript that is going to handle this module
     'translateDirectives',
+    'googlePlacesDirectives',
     'jobServices',
     'localeServices',
     'locationServices'
@@ -35,6 +36,10 @@ myApp.config(['$routeProvider', 'LOCALES', function($routeProvider, LOCALES){
     when('/:locale/search', {
         templateUrl: 'partials/search.html',
         controller: 'SearchController'
+    }).
+    when('/:locale/location', {
+        templateUrl: 'partials/location.html',
+        controller: 'LocationController'
     }).
     otherwise({
         redirectTo: '/' + LOCALES.preferredLocale + '/list'

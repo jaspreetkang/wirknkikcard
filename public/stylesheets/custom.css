@@ -27,49 +27,93 @@
     position: relative;
 }
 
-.page-search .search {
-    width: 100%
-}
-
 .page-search .search-image {
     height: 40px;
     width: 40px;
 }
 
-.page-search .search-name {
+.page-search .search-name,
+.page-location .search-name {
     vertical-align: middle;
     margin-left: 15px;
 }
 
-.page-search ul {
+.page-search ul,
+.page-location ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.page-search ul li a {
+.page-search ul li a,
+.page-location ul li a {
     color: #666666;
 }
 
-.page-search ul li a:visited {
+.page-search ul li a:visited,
+.page-location ul li a:visited {
     color: #666666;
 }
 
-.page-search ul li a:hover {
+.page-search ul li a:hover,
+.page-location ul li a:hover {
     color: #666666;
 }
 
-.page-search .search-label {
+.page-search .search-label,
+.page-location .search-label {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.page-search .search-term {
+.page-location .search-label i {
+    font-size: 1.6em;
+    padding-right: 10px;
+    color: #00a9e0;
+}
+
+.page-search .search-term,
+.page-location .search-term {
     height: 61px;
     padding: 10px;
     border-top: 1px #e3e3e3 solid;
     background-color: white;
+}
+
+.page-location .use-current-location {
+    cursor: pointer;
+}
+
+.page-location input.location-input {
+    border: none;
+    background: #02a8e0;
+    height: 50px;
+    width: 250px;
+    color: white;
+}
+
+.page-location input.location-input::placeholder {
+    color: white#000;
+}
+
+.page-location input.location-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: white;
+}
+.page-location input.location-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+    opacity: 1;
+}
+.page-location input.location-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+    opacity: 1;
+}
+.page-location input.location-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+}
+.page-location input.location-input:placeholder-shown {
+    color: white;
+    border: none;
 }
 
 @media screen and (max-width: 600px) {

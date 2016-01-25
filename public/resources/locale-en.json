@@ -17,5 +17,9 @@
     "partials.search.Business": "Business",
     "partials.search.Merchandising": "Merchandising",
 
+    "partials.location.LocationPlaceholder": "Start Typing Location...",
+    "partials.location.UseCurrentLocation": "Use Current Location",
+    "partials.location.Locations": "LOCATIONS",
+
     "directives.language-select.Language": "Language"
 }

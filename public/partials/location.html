@@ -1,0 +1,31 @@
+<nav class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8">
+                <i class="fa fa-map-marker header-icons"></i>
+                <input autofocus type="text" placeholder="{{'partials.location.LocationPlaceholder' | translate}}" class="location-input" ng-model="query" ng-keyup="getSuggestions(query)">
+            </div>
+            <div class="col-xs-4">
+                <a href="#/{{currentLocale}}/list" onclick="history.back()" class="pull-right"><i class="fa fa-times-circle header-icons"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="top-bar" class="offset"></div>
+<div>
+    <ul>
+        <li class="search-term">
+            <p class="search-label use-current-location" ng-click="useCurrentLocation()">
+                <i class="fa fa-location-arrow"></i>
+                {{"partials.location.UseCurrentLocation" | translate}}
+            </p>
+        </li>
+        <li class="search-term"><p class="search-label">{{"partials.location.Locations" | translate}}</p></li>
+        <li ng-repeat="pred in response" class="search-term">
+            <a href ng-click="getCoordinates(pred)">
+                <span class="search-name">{{pred.description}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
+

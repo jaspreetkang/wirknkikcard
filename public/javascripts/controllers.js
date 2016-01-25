@@ -1,19 +1,13 @@
 var joblistControllers = angular.module('joblistControllers',[]);
 
-joblistControllers.controller('ListController', ['$scope', '$routeParams', 'JobService', 'LocationService', 'LocaleService', function($scope, $routeParams, JobService, LocationService, LocaleService){
+joblistControllers.controller('ListController', ['$scope', '$routeParams', '$location', 'JobService', 'LocationService', 'LocaleService', function($scope, $routeParams, $location, JobService, LocationService, LocaleService){
 
     $scope.pageClass = 'page-list';
 
     LocaleService.setLocale($routeParams.locale);
     $scope.currentLocale = LocaleService.getLocale();
 
-    var searchTerm = '';
-    if ($routeParams.searchTerm) {
-        searchTerm = $scope.searchTerm = $routeParams.searchTerm;
-        $scope.searchTermVisible = true;
-    }
-
-    var coordinates = LocationService.getCoordinates().then(function(coords) {
+    var getJobs = function(coords) {
         JobService.getData(coords.latitude, coords.longitude, searchTerm).then(function onSuccess(data) {
             $scope.joblist = data;
             $scope.jobOrder = 'title';
@@ -27,7 +21,26 @@ joblistControllers.controller('ListController', ['$scope', '$routeParams', 'JobS
         }, function(response) {
             console.log(response);
         });
-    });
+    };
+
+    var searchTerm = '';
+    if ($routeParams.searchTerm) {
+        searchTerm = $scope.searchTerm = $routeParams.searchTerm;
+        $scope.searchTermVisible = true;
+    }
+
+    if ($location.search().lat && $location.search().lon) {
+        var coords = {
+            latitude: Number($location.search().lat),
+            longitude: Number($location.search().lon)
+        };
+        getJobs(coords);
+    }
+    else {
+        var coordinates = LocationService.getCoordinates().then(function(coords) {
+            getJobs(coords);
+        });
+    }
 }]);
 
 joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'JobService', 'LocaleService', function($scope, $routeParams, JobService, LocaleService) {
@@ -79,7 +92,7 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
     };
 }]);
 
-joblistControllers.controller('SearchController', ['$scope', '$routeParams', 'JobService', 'LocaleService', function($scope, $routeParams, JobService, LocaleService) {
+joblistControllers.controller('SearchController', ['$scope', '$routeParams', 'LocaleService', function($scope, $routeParams, LocaleService) {
 
     $scope.pageClass = 'page-search';
 
@@ -138,3 +151,54 @@ joblistControllers.controller('SearchController', ['$scope', '$routeParams', 'Jo
         }
     ];
 }]);
+
+joblistControllers.controller('LocationController', ['$scope', '$routeParams', '$location', 'LocaleService', function($scope, $routeParams, $location, LocaleService) {
+    $scope.pageClass = 'page-location';
+
+    LocaleService.setLocale($routeParams.locale);
+    $scope.currentLocale = LocaleService.getLocale();
+
+    $scope.$on('$routeChangeSuccess', function(e, currentRoute, previousRoute) {
+        window.scrollTo(0, 0);
+    });
+
+    var autoComplete = new google.maps.places.AutocompleteService();
+    var places = new google.maps.places.PlacesService($('<div />')[0]);
+    
+    $scope.getSuggestions = function(query) {
+
+        if (query != '') {
+            
+            var searchObj = {
+                input: query,
+                types: '(cities)'
+            };
+            
+            autoComplete.getQueryPredictions(searchObj, function(predictions, status) {
+                if (status != google.maps.places.PlacesServiceStatus.OK) {
+                    console.log('Error retrieving autocomplete: '+ status);
+                } else {
+                    console.log(predictions);
+                    $scope.$apply(function() {
+                        $scope.response = predictions;                
+                    });
+                }
+            });
+        }
+    };
+
+    $scope.getCoordinates = function(request) {
+        places.getDetails(request, function(place, status) {
+            console.log(place);
+            var lat = place.geometry.location.lat();
+            var lon = place.geometry.location.lng();
+            //$location.path($scope.currentLocale + '/list?lat=' + lat + '&lon=' + lon).replace();
+            location.replace('#/' + $scope.currentLocale + '/list?lat=' + lat + '&lon=' + lon);
+        });
+    };
+
+    $scope.useCurrentLocation = function() {
+        location.replace('#/' + $scope.currentLocale + '/list');
+    }
+}]);
+
