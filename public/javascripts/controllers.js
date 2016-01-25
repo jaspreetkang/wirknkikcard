@@ -167,7 +167,7 @@ joblistControllers.controller('LocationController', ['$scope', '$routeParams', '
     
     $scope.getSuggestions = function(query) {
 
-        if (query != '') {
+        if (query !== '') {
             
             var searchObj = {
                 input: query,
@@ -199,6 +199,6 @@ joblistControllers.controller('LocationController', ['$scope', '$routeParams', '
 
     $scope.useCurrentLocation = function() {
         location.replace('#/' + $scope.currentLocale + '/list');
-    }
+    };
 }]);
 
