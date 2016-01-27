@@ -1,6 +1,6 @@
 var joblistControllers = angular.module('joblistControllers',[]);
 
-joblistControllers.controller('ListController', ['$scope', '$routeParams', '$location', '$uibModal', 'JobService', 'LocationService', 'LocaleService', 'ModalService', function($scope, $routeParams, $location, $uibModal, JobService, LocationService, LocaleService, ModalService) {
+joblistControllers.controller('ListController', ['$scope', '$routeParams', '$location', '$cookies', '$uibModal', 'JobService', 'LocationService', 'LocaleService', 'ModalService', function($scope, $routeParams, $location, $cookies, $uibModal, JobService, LocationService, LocaleService, ModalService) {
 
     $scope.pageClass = 'page-list';
 
@@ -33,10 +33,10 @@ joblistControllers.controller('ListController', ['$scope', '$routeParams', '$loc
         $scope.searchTermVisible = true;
     }
 
-    if ($location.search().lat && $location.search().lon) {
+    if ($cookies.get('lat') && $cookies.get('lon')) {
         var coords = {
-            latitude: Number($location.search().lat),
-            longitude: Number($location.search().lon)
+            latitude: Number($cookies.get('lat')),
+            longitude: Number($cookies.get('lon'))
         };
         getJobs(coords, searchTerm);
     }
@@ -163,7 +163,7 @@ joblistControllers.controller('SearchController', ['$scope', '$routeParams', 'Lo
     ];
 }]);
 
-joblistControllers.controller('LocationController', ['$scope', '$routeParams', '$location', 'LocaleService', function($scope, $routeParams, $location, LocaleService) {
+joblistControllers.controller('LocationController', ['$scope', '$routeParams', '$location', '$cookies', 'LocaleService', function($scope, $routeParams, $location, $cookies, LocaleService) {
     $scope.pageClass = 'page-location';
 
     LocaleService.setLocale($routeParams.locale);
@@ -203,12 +203,15 @@ joblistControllers.controller('LocationController', ['$scope', '$routeParams', '
             console.log(place);
             var lat = place.geometry.location.lat();
             var lon = place.geometry.location.lng();
-            //$location.path($scope.currentLocale + '/list?lat=' + lat + '&lon=' + lon).replace();
-            location.replace('#/' + $scope.currentLocale + '/list?lat=' + lat + '&lon=' + lon);
+            $cookies.put('lat', lat);
+            $cookies.put('lon', lon);
+            location.replace('#/' + $scope.currentLocale + '/list');
         });
     };
 
     $scope.useCurrentLocation = function() {
+        $cookies.remove('lat');
+        $cookies.remove('lon');
         location.replace('#/' + $scope.currentLocale + '/list');
     };
 }]);
@@ -218,6 +221,11 @@ joblistControllers.controller('ModalInstanceController', ['$scope', '$uibModalIn
     $scope.message = message;
 
     $scope.ok = function () {
+        kik.send({
+            title: 'Message title',
+            text: 'Message body',
+            url: location.href
+        });
         $uibModalInstance.close();
     };
 

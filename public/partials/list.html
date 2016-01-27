@@ -63,8 +63,14 @@
             <p>{{message.body | translate}}</p>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class="modal-buttons share" type="button" ng-click="ok()">{{"partials.list.Share" | translate}}</button>
+                </div>
+                <div class="col-xs-6">
+                    <button class="modal-buttons show-jobs" type="button" ng-click="cancel()">{{"partials.list.ShowJobs" | translate}}</button>
+                </div>
+            </div>
         </div>
     </div>
 </script>
