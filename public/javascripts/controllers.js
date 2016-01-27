@@ -25,11 +25,21 @@ joblistControllers.controller('ListController', ['$scope', '$routeParams', '$loc
 
     var searchTerm = '';
     if ($routeParams.searchTerm) {
-        searchTerm = $scope.searchTerm = $routeParams.searchTerm;
+        if ($routeParams.searchTerm.toLowerCase() === 'all') {
+            $scope.searchTerm = $routeParams.searchTerm;
+        }
+        else {
+            searchTerm = $scope.searchTerm = $routeParams.searchTerm;
+        }
         $scope.searchTermVisible = true;
     }
     else if($location.search().q) {
-        searchTerm = $scope.searchTerm = $location.search().q;
+        if ($location.search().q.toLowerCase() === 'all') {
+            $scope.searchTerm = $location.search().q;
+        }
+        else {
+            searchTerm = $scope.searchTerm = $location.search().q;
+        }
         $scope.searchTermVisible = true;
     }
 
