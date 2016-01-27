@@ -257,7 +257,7 @@ modalServices.service('ModalService', ['$uibModal', function($uibModal) {
 
     var openModal = function() {
         return modalShouldOpen;
-    }
+    };
 
     var open = function(key, size) {
 
@@ -279,6 +279,6 @@ modalServices.service('ModalService', ['$uibModal', function($uibModal) {
         openModal: openModal,
         message: message,
         open: open
-    }
-}])
+    };
+}]);
 

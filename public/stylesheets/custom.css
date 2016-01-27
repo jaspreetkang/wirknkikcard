@@ -120,6 +120,22 @@
     width: 100%;
 }
 
+.modal-buttons {
+    width: 100%;
+    height: 50px;
+    border-radius: 2px;
+    border: none;
+    color: white;
+}
+
+.modal-buttons.share {
+    background-color: #3fcaca;
+}
+
+.modal-buttons.show-jobs {
+    background-color: #00a9e0;
+}
+
 @media screen and (max-width: 600px) {
     .hidden-xxs {
         display: none;
