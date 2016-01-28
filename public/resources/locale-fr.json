@@ -1,6 +1,37 @@
 {
     "partials.list.JobsIn": "Emplois à",
     "partials.list.Search": "Recherche",
+    "partials.list.Filter": "Filtrer ces résultats",
+    "partials.list.SearchTerm": "Terme de recherche",
+
+    "partials.list.Standout.title": "Le/la distingué(e)",
+    "partials.list.Standout.body": "Tu regardes deux fois dans le miroir avant de sortir car ton style est ta manière de t'exprimer. Magasiner est un sport professionnel pour toi, après tout, tu es l'expert(e) des soldes. Tu adores aider les gens et tu n'as pas peur de donner ton opinion. Un emploi dans le commerce de détail est parfait pour toi, pas seulement pour l'escompte employé, mais également car ton style et ton individualité y sont grandement appréciés.",
+
+    "partials.list.Charmer.title": "Le/la charmeur(se)",
+    "partials.list.Charmer.body": "Tu es charmant(e), vif(ve) d'esprit, et certains diront même charismatique. Un(e) vrai(e) extraverti(e) qui puise son énergie des gens, jaser est un de tes loisirs préférés. La combinaison idéale pour un emploi en restauration, où un seul sourire te vaudra bien du pourboire. Oh, et ça ne nuit pas non plus que tu sois un(e) épicurien(nne)!",
+
+    "partials.list.PartyAnimal.title": "Le/la fêtard(e)",
+    "partials.list.PartyAnimal.body": "Tu as tellement un trop plein d'énergie que tu dois la laisser sortir. Tu es facilement distrait(e) par toutes les choses géniales qui se passent dans le monde. Tu te soucis de ce qui se déroule devant tes yeux et tu profites de chaque jour à fond. Les emplois dans l'événementiel sont l'idéal pour toi, non seulement car tu pourras intéragir avec une foule de gens, mais aussi parce que tu pourras admirer le spectacle!",
+
+    "partials.list.Idealist.title": "L'idéaliste",
+    "partials.list.Idealist.body": "Tu aimes tout et t'intéresse à tout. Comment faire autrement? Pourquoi faire un choix quand tu peux tout essayer? Certains te qualifieront d'indécis(e), mais toi tu appelles ça l'optimisme et la curiosité. On te propose donc une liste d'emplois divers, à toi de choisir celui qui te cnovient le mieux!",
+
+    "partials.search.SearchJobs": "Recherche d'emplois",
+    "partials.search.Categories": "CATÉGORIES",
+    "partials.search.Food": "Nourriture",
+    "partials.search.CoffeeShops": "Cafés",
+    "partials.search.Bartender": "Barman/barmaid",
+    "partials.search.Nightlife": "Vie nocture",
+    "partials.search.Cashier": "Caissier(ère)",
+    "partials.search.Hospitality": "Hôtelerie",
+    "partials.search.Server": "Serveur(se)",
+    "partials.search.CustomerSupport": "Service à la clientèle",
+    "partials.search.Business": "Administration",
+    "partials.search.Merchandising": "Marchandisage",
+
+    "partials.location.LocationPlaceholder": "Commencer à entrer l'emplacement'",
+    "partials.location.UseCurrentLocation": "Utiliser votre emplacement actuel",
+    "partials.location.Locations": "EMPLACEMENTS",
+
     "directives.language-select.Language": "Language"
 }
-
