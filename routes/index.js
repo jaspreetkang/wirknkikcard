@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request');
 var config = require('../config/config.js');
 
-var baseUrl = config.wirkn_api;
+var baseUrl = config.wirkn_api + 'jobs/';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,7 +16,7 @@ router.get('/getJobs', function(req, res, next) {
     var lon = req.query.lon;
     var searchTerm = req.query.q;
 
-    var url = baseUrl + 'jobs/' + '?lat=' + lat + '&lon=' + lon + '&radius=25000&limit=600&offset=00&expired=false';
+    var url = baseUrl + '?lat=' + lat + '&lon=' + lon + '&radius=25000&limit=600&offset=00&expired=false';
     if (searchTerm) {
         url += '&q=' + searchTerm;
     }
@@ -25,8 +25,6 @@ router.get('/getJobs', function(req, res, next) {
         if (!error && response.statusCode == 200) {
             res.send(body);
         }
-        console.log(error, response, body)
-        console.log("requested");
     });
 });
 
