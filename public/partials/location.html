@@ -6,7 +6,7 @@
                 <input autofocus type="text" placeholder="{{'partials.location.LocationPlaceholder' | translate}}" class="location-input" ng-model="query" ng-keyup="getSuggestions(query)">
             </div>
             <div class="col-xs-2">
-                <a href="#/{{currentLocale}}/list" onclick="history.go(-1)" class="pull-right"><i class="fa fa-times-circle header-icons"></i></a>
+                <a href="#/{{currentLocale}}/list" onclick="history.go(-1);return false;" class="pull-right"><i class="fa fa-times-circle header-icons"></i></a>
             </div>
         </div>
     </div>
