@@ -31,24 +31,30 @@
         <div class="col-md-12 data-box">
             <input type="text" name="search" id="search" placeholder="{{'partials.list.Filter' | translate}}" class="search" ng-model="query"/>
         </div>
-        <div class='text-center pre-load'>
-            <img ng-src="/images/graphic.svg" style="margin-top:30px;">
-        </div>
-        <div ng-repeat="item in joblist | filter:query | orderBy: jobOrder:direction" id="item_{{joblist.indexOf(item)}}"><!-- | limitTo: 3 -->
-            <a href="#/{{currentLocale}}/details/{{item._id}}">
-                <div class="col-md-12 job-box">
-                    <div class="data-text">
-                        <div class="title">{{item.title}}</div>
-                        <div class="">{{item.employer.name}}</div>
-                        <div class="address">
-                            <i class="fa fa-map-marker"></i>
-                            <span>{{item.distance/1000 | number:2}}  km away</span>
+        <div infinite-scroll="getMoreJobs()"
+             infinite-scroll-distance="1"
+             infinite-scroll-immediate-check="false"
+             infinite-scroll-disabled="pauseScroll">
+            <div class='text-center pre-load'>
+                <img ng-src="/images/graphic.svg" style="margin-top:30px;">
+            </div>
+            <div ng-repeat="item in joblist | filter:query" id="item_{{joblist.indexOf(item)}}"><!-- | limitTo: 3 -->
+                <a href="#/{{currentLocale}}/details/{{item._id}}">
+                    <div class="col-md-12 job-box">
+                        <div class="data-text">
+                            <div class="title">{{item.title}}</div>
+                            <div class="">{{item.employer.name}}</div>
+                            <div class="address">
+                                <i class="fa fa-map-marker"></i>
+                                <span>{{item.distance/1000 | number:2}}  km away</span>
+                            </div>
                         </div>
+                        <div class="data-img">
+                        <img ng-src="{{item.cover_images[0]}}"></div>
                     </div>
-                    <div class="data-img">
-                    <img ng-src="{{item.cover_images[0]}}"></div>
-                </div>
-            </a>
+                </a>
+            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>

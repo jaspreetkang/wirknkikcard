@@ -7,7 +7,8 @@ if (process.env.MODE == 'dev') {
 }
 else {
     wirkn_api = 'http://prod-wirkn.rhcloud.com/v2/';
-    analytics_api_key = 'kLrqxi1R0zbiB1KKbJk3jukkrsalVYhH';
+    analytics_api_key = 'AzsPpHt79pDJWf2n5TNHli06IfImCtXd'; // for testing on heroku
+    //analytics_api_key = 'kLrqxi1R0zbiB1KKbJk3jukkrsalVYhH';
 }
 
 module.exports = {

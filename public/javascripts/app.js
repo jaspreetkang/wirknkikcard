@@ -4,6 +4,7 @@ var myApp = angular.module('myApp',[
     'ngCookies',
     'ngSanitize',
     'pascalprecht.translate', // angular-translate
+    'infinite-scroll',
     'tmh.dynamicLocale', // angular-dynamic-locale
     'ui.bootstrap',
     'wirknAnimations',

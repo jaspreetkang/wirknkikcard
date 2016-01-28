@@ -29,23 +29,32 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
         return defer.promise;
     };
 
-    var getData = function(lat, lon, searchTerm) {
+    var getData = function(lat, lon, searchTerm, offset) {
         var defer = $q.defer();
 
         lat = lat.toFixed(3);
         lon = lon.toFixed(3);
 
-        var cacheKey = 'jobs-' + searchTerm;
+        var cacheKey = 'jobs-' + searchTerm + '-' + offset;
         var condition = lat == self.latitude && lon == self.longitude;
 
         self.latitude = lat || '';
         self.longitude = lon || '';
         self.searchTerm = searchTerm || '';
+        self.offset = offset || '00';
 
-        var url = '/getJobs?lat=' + self.latitude + '&lon=' + self.longitude;
+        var urlParts = [
+            '/getJobs',
+            '?lat=' + self.latitude,
+            '&lon=' + self.longitude,
+            '&offset=' + self.offset
+        ];
+
         if (self.searchTerm.length > 0) {
-            url += '&q=' + self.searchTerm;
+            urlParts.push('&q=' + self.searchTerm);
         }
+
+        var url = urlParts.join('');
 
         fetchData(url, cacheKey, condition)
         .then(function(response) {

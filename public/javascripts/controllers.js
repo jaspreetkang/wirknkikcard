@@ -13,11 +13,13 @@ joblistControllers.controller('ListController',
     LocaleService.setLocale($routeParams.locale);
     $scope.currentLocale = LocaleService.getLocale();
 
+    $scope.pauseScroll = false;
+
     // Define function to get jobs and assign $scope variables
     var getJobs = function(coords, searchTerm) {
         JobService.getData(coords.latitude, coords.longitude, searchTerm).then(function onSuccess(data) {
             $scope.joblist = data;
-            $scope.jobOrder = 'title';
+            $scope.searchTerm = searchTerm;
             $('.pre-load').remove();
         }, function onError(response) {
             $scope.error = "failed to get data";        
@@ -60,7 +62,22 @@ joblistControllers.controller('ListController',
     }
     else {
         var coordinates = LocationService.getCoordinates().then(function(coords) {
+            $cookies.put('lat', coords.latitude);
+            $cookies.put('lon', coords.longitude);
             getJobs(coords, searchTerm);
+        });
+    }
+
+    // Infinite scrolling
+    $scope.getMoreJobs = function() {
+        $scope.pauseScroll = true;
+        var offset = $scope.joblist.length;
+        var lat = Number($cookies.get('lat'));
+        var lon = Number($cookies.get('lon'));
+        console.log(offset)
+        JobService.getData(lat, lon, searchTerm, offset).then(function(data) {
+            Array.prototype.push.apply($scope.joblist, data);
+            $scope.pauseScroll = false;
         });
     }
 

@@ -3,7 +3,7 @@ var plumber = require('gulp-plumber');
 var jshint = require('gulp-jshint');
 
 gulp.task('lint', function () {
-    gulp.src(['./**/*.js', '!./node_modules/**/*.js', '!./public/vendor/**/*.js', '!./public/javascripts/branchio/**/*.js'])
+    gulp.src(['./**/*.js', '!./node_modules/**/*.js', '!./public/vendor/**/*.js', '!./public/javascripts/branchio/**/*.js', '!./public/javascripts/segment/**/*.js'])
         .pipe(plumber())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));

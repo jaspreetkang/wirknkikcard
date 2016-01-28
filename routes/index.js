@@ -14,12 +14,28 @@ router.get('/', function(req, res, next) {
 router.get('/getJobs', function(req, res, next) {
     var lat = req.query.lat;
     var lon = req.query.lon;
+    var radius = '25000';
     var searchTerm = req.query.q;
+    var limit = req.query.limit || '20';
+    var offset = req.query.offset || '00';
+    var expired = 'false';
 
-    var url = baseUrl + '?lat=' + lat + '&lon=' + lon + '&radius=25000&limit=600&offset=00&expired=false';
+    var urlParts = [
+        baseUrl,
+        '?lat=' + lat,
+        '&lon=' + lon,
+        '&radius=' + radius,
+        '&limit=' + limit,
+        '&expired=' + expired,
+        '&offset=' + offset
+    ];
+
     if (searchTerm) {
-        url += '&q=' + searchTerm;
+        urlParts.push('&q=' + searchTerm);
     }
+    
+    var url = urlParts.join('');
+    console.log(url);
 
     request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
