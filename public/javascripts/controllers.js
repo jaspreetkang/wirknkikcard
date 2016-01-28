@@ -74,7 +74,6 @@ joblistControllers.controller('ListController',
         var offset = $scope.joblist.length;
         var lat = Number($cookies.get('lat'));
         var lon = Number($cookies.get('lon'));
-        console.log(offset)
         JobService.getData(lat, lon, searchTerm, offset).then(function(data) {
             Array.prototype.push.apply($scope.joblist, data);
             $scope.pauseScroll = false;
@@ -248,7 +247,6 @@ joblistControllers.controller('LocationController', ['$scope', '$routeParams', '
                 if (status != google.maps.places.PlacesServiceStatus.OK) {
                     console.log('Error retrieving autocomplete: '+ status);
                 } else {
-                    console.log(predictions);
                     $scope.$apply(function() {
                         $scope.response = predictions;                
                     });
@@ -259,7 +257,6 @@ joblistControllers.controller('LocationController', ['$scope', '$routeParams', '
 
     $scope.getCoordinates = function(request) {
         places.getDetails(request, function(place, status) {
-            console.log(place);
             var lat = place.geometry.location.lat();
             var lon = place.geometry.location.lng();
             $cookies.put('lat', lat);
