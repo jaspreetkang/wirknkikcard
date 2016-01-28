@@ -282,3 +282,46 @@ modalServices.service('ModalService', ['$uibModal', function($uibModal) {
     };
 }]);
 
+var kikServices = angular.module('kikServices', []);
+
+kikServices.service('KikService', ['$cookies', function($cookies) {
+    var setKikUsername = function(value) {
+        $cookies.put("kikUsername", value);
+    };
+
+    var getKikUsername = function() {
+        return $cookies.get("kikUsername");
+    }
+
+    var identifyKikUser = function() {
+        if (kik.enabled) {
+            kik.getUser(function(user) {
+                if (!user) {
+                    if (getKikUsername()) {
+                        analytics.identify(getKikUsername());
+                    }
+                }
+                else {
+                    analytics.identify(user.username, {
+                        name: user.fullName,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        kik_username: user.username
+                    });
+                }
+            });
+        }
+    };
+
+    var track = function(event, properties, options, cb) {
+        analytics.track(event, properties, options, cb);
+    };
+
+    return {
+        setKikUsername: setKikUsername,
+        getKikUsername: getKikUsername,
+        identifyKikUser: identifyKikUser,
+        track: track
+    };
+}]);
+

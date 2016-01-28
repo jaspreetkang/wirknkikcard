@@ -12,7 +12,8 @@ var myApp = angular.module('myApp',[
     'jobServices',
     'localeServices',
     'locationServices',
-    'modalServices'
+    'modalServices',
+    'kikServices'
     ])
     .constant('LOCALES', {
         'locales': {

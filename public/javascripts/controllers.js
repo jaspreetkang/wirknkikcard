@@ -1,12 +1,19 @@
 var joblistControllers = angular.module('joblistControllers',[]);
 
-joblistControllers.controller('ListController', ['$scope', '$routeParams', '$location', '$cookies', '$uibModal', 'JobService', 'LocationService', 'LocaleService', 'ModalService', function($scope, $routeParams, $location, $cookies, $uibModal, JobService, LocationService, LocaleService, ModalService) {
+joblistControllers.controller('ListController',
+                              ['$scope', '$routeParams', '$location', '$cookies',
+                               '$uibModal', 'JobService', 'LocationService',
+                               'LocaleService', 'ModalService', 'KikService',
+                               function($scope, $routeParams, $location, $cookies,
+                                        $uibModal, JobService, LocationService,
+                                        LocaleService, ModalService, KikService) {
 
     $scope.pageClass = 'page-list';
 
     LocaleService.setLocale($routeParams.locale);
     $scope.currentLocale = LocaleService.getLocale();
 
+    // Define function to get jobs and assign $scope variables
     var getJobs = function(coords, searchTerm) {
         JobService.getData(coords.latitude, coords.longitude, searchTerm).then(function onSuccess(data) {
             $scope.joblist = data;
@@ -23,6 +30,7 @@ joblistControllers.controller('ListController', ['$scope', '$routeParams', '$loc
         });
     };
 
+    // Get all parameters and search
     var searchTerm = '';
     if ($routeParams.searchTerm) {
         if ($routeParams.searchTerm.toLowerCase() === 'all') {
@@ -56,15 +64,28 @@ joblistControllers.controller('ListController', ['$scope', '$routeParams', '$loc
         });
     }
 
-    // Modal on open
+    // Modal open
     if ($location.search().q && ModalService.openModal()) {
         $scope.message = ModalService.message($location.search().q.toLowerCase());
 
         ModalService.open($location.search().q.toLowerCase(), 'sm');
     }
+
+    // Analytics
+    if ($location.search().kik_username) {
+        KikService.setKikUsername($location.search().kik_username);
+    }
+
+    KikService.identifyKikUser();
+
+    KikService.track('kik_job_list');
 }]);
 
-joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'JobService', 'LocaleService', function($scope, $routeParams, JobService, LocaleService) {
+joblistControllers.controller('DetailsController',
+                              ['$scope', '$routeParams', 'JobService',
+                               'LocaleService', 'KikService',
+                               function($scope, $routeParams, JobService, 
+                                        LocaleService, KikService) {
 
     $scope.pageClass = 'page-details';
 
@@ -75,19 +96,31 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
         window.scrollTo(0, 0);
     });
 
+    // Analytics
+    KikService.identifyKikUser();
+
     JobService.getDetails($routeParams.itemId).then(function(data) {
         var job = data;
         $scope.job = job;
+
+        KikService.track('kik_job_details', {
+            job_id: job._id,
+            job_title: job.title,
+            job_employer: job.employer.name
+        });
     }, function(reason) {
         $scope.error = "failed to get data";        
     });
 
-    branch.init("key_live_nmllYe7xNU5DUy340KNxMenagcpeaP95", function(err, data) {
-        console.log(data);
-        console.log(err);
-    });
+    branch.init("key_live_nmllYe7xNU5DUy340KNxMenagcpeaP95", function(err, data) {});
 
     $scope.applyNow = function() {
+        KikService.track('kik_apply_now', {
+            job_id: $scope.job._id,
+            job_title: $scope.job.title,
+            job_employer: $scope.job.employer.name
+        });
+
         branch.link({
             channel: 'kik_card',
             campaign: 'personality_quiz',
@@ -107,7 +140,6 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
                 'alias_id': ""
             }
         }, function(err, link) {
-            //$scope.quickApplyLink = link;
             window.location.replace(link);
         });      
     };

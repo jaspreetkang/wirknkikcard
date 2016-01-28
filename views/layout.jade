@@ -16,6 +16,13 @@ html(ng-app="myApp")
         script(type='text/javascript' src='/vendor/jquery/dist/jquery.min.js')
         script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?libraries=places")
         script(type='text/javascript' src='/javascripts/branchio/branchio.min.js')
+        script(type='text/javascript' src='https://cdn.kik.com/kik/2.0.5/kik.js')
+
+        script(type='text/javascript', src='/vendor/segment/analytics.min.js')
+        script.
+            analytics.load('#{analytics_api_key}');
+            analytics.page()
+
         script(type='text/javascript' src='/vendor/angular/angular.min.js')
         script(type='text/javascript' src='/vendor/angular-route/angular-route.min.js')
         script(type='text/javascript' src='/vendor/angular-cookies/angular-cookies.min.js')
@@ -36,6 +43,5 @@ html(ng-app="myApp")
         script(type='text/javascript' src='/javascripts/services.js')
         script(type='text/javascript' src='/javascripts/directives.js')
         script(type='text/javascript' src='/javascripts/controllers.js')
-        script(type='text/javascript' src='https://cdn.kik.com/kik/2.0.5/kik.js')
     body(class = "kik")
         block content
