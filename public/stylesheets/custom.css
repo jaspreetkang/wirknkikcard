@@ -94,7 +94,7 @@
 }
 
 .page-location input.location-input::placeholder {
-    color: white#000;
+    color: white;
 }
 
 .page-location input.location-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
