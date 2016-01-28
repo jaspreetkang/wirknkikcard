@@ -72,10 +72,7 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
         $scope.error = "failed to get data";        
     });
 
-    branch.init("key_live_nmllYe7xNU5DUy340KNxMenagcpeaP95", function(err, data) {
-        console.log(data);
-        console.log(err);
-    });
+    branch.init("key_live_nmllYe7xNU5DUy340KNxMenagcpeaP95", function(err, data) {});
 
     $scope.applyNow = function() {
         branch.link({
@@ -189,7 +186,6 @@ joblistControllers.controller('LocationController', ['$scope', '$routeParams', '
                 if (status != google.maps.places.PlacesServiceStatus.OK) {
                     console.log('Error retrieving autocomplete: '+ status);
                 } else {
-                    console.log(predictions);
                     $scope.$apply(function() {
                         $scope.response = predictions;                
                     });
@@ -200,7 +196,6 @@ joblistControllers.controller('LocationController', ['$scope', '$routeParams', '
 
     $scope.getCoordinates = function(request) {
         places.getDetails(request, function(place, status) {
-            console.log(place);
             var lat = place.geometry.location.lat();
             var lon = place.geometry.location.lng();
             $cookies.put('lat', lat);
@@ -221,11 +216,14 @@ joblistControllers.controller('ModalInstanceController', ['$scope', '$uibModalIn
     $scope.message = message;
 
     $scope.ok = function () {
-        kik.send({
-            title: 'Message title',
-            text: 'Message body',
-            url: location.href
-        });
+        if (kik.send) {
+            kik.send({
+                title: 'My Job Personality',
+                text: 'I just took the Wirkn Personality Test and found out what kind of job personality I have — check out my results or give it a try yourself!',
+                pic: 'https://wirknintellibot.herokuapp.com/images/wirkn-jobs.png',
+                url: location.href
+            });
+        }
         $uibModalInstance.close();
     };
 
