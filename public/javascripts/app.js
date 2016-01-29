@@ -1,18 +1,15 @@
-var myApp = angular.module('myApp',[
-    'ngRoute', // take care of deep linking
+var wirknApp = angular.module('wirknApp',[
+    'ngRoute',
     'ngGeolocation',
     'ngCookies',
     'ngSanitize',
-    'pascalprecht.translate', // angular-translate
-    'tmh.dynamicLocale', // angular-dynamic-locale
+    'pascalprecht.translate',
+    'tmh.dynamicLocale',
     'ui.bootstrap',
     'wirknAnimations',
-    'joblistControllers', // javascript that is going to handle this module
-    'translateDirectives',
-    'jobServices',
-    'localeServices',
-    'locationServices',
-    'modalServices'
+    'wirknControllers',
+    'wirknDirectives',
+    'wirknServices'
     ])
     .constant('LOCALES', {
         'locales': {
@@ -23,7 +20,7 @@ var myApp = angular.module('myApp',[
         'preferredLocale': 'en'
     });
 
-myApp.config(['$routeProvider', 'LOCALES', function($routeProvider, LOCALES){
+wirknApp.config(['$routeProvider', 'LOCALES', function($routeProvider, LOCALES){
     $routeProvider.
     when('/:locale/list/:searchTerm?', {
         templateUrl: 'partials/list.html',
@@ -46,20 +43,20 @@ myApp.config(['$routeProvider', 'LOCALES', function($routeProvider, LOCALES){
     });
 }]);
 
-myApp.config(['$translateProvider', function($translateProvider) {
+wirknApp.config(['$translateProvider', function($translateProvider) {
     $translateProvider.useMissingTranslationHandlerLog();
 }]);
 
-myApp.config(['$translateProvider', function($translateProvider) {
+wirknApp.config(['$translateProvider', function($translateProvider) {
     $translateProvider.useStaticFilesLoader({
         prefix: 'resources/locale-',
         suffix: '.json'
     });
-    $translateProvider.preferredLanguage('en_US');
+    $translateProvider.preferredLanguage('en');
     $translateProvider.useLocalStorage();
 }]);
 
-myApp.config(['tmhDynamicLocaleProvider', function(tmhDynamicLocaleProvider) {
+wirknApp.config(['tmhDynamicLocaleProvider', function(tmhDynamicLocaleProvider) {
     tmhDynamicLocaleProvider.localeLocationPattern('vendor/angular-i18n/angular-locale_{{locale}}.js');
 }]);
 

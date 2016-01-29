@@ -1,6 +1,6 @@
-var jobServices = angular.module('jobServices', []);
+var wirknServices = angular.module('wirknServices', []);
 
-jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, $http, $cacheFactory) {
+wirknServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, $http, $cacheFactory) {
     var city = '';
     this.cache = $cacheFactory('jobData');
     var self = this;
@@ -106,8 +106,7 @@ jobServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, 
     };
 }]);
 
-var localeServices = angular.module('localeServices', []);
-localeServices.service('LocaleService', ['$translate', 'LOCALES', '$rootScope', 'tmhDynamicLocale', function($translate, LOCALES, $rootScope, tmhDynamicLocale) {
+wirknServices.service('LocaleService', ['$translate', 'LOCALES', '$rootScope', 'tmhDynamicLocale', function($translate, LOCALES, $rootScope, tmhDynamicLocale) {
     // Prepare Locales Info
     var localesObj = LOCALES.locales;
 
@@ -171,9 +170,7 @@ localeServices.service('LocaleService', ['$translate', 'LOCALES', '$rootScope', 
     };
 }]);
 
-var locationServices = angular.module('locationServices', []);
-
-locationServices.service('LocationService', ['$q', '$geolocation', function($q, $geolocation) {
+wirknServices.service('LocationService', ['$q', '$geolocation', function($q, $geolocation) {
     var latitude = 0;
     var longitude = 0;
     var locationIsInitialized = false;
@@ -222,9 +219,7 @@ locationServices.service('LocationService', ['$q', '$geolocation', function($q, 
     };
 }]);
 
-var modalServices = angular.module('modalServices', []);
-
-modalServices.service('ModalService', ['$uibModal', function($uibModal) {
+wirknServices.service('ModalService', ['$uibModal', function($uibModal) {
     
     var modalShouldOpen = true;
 

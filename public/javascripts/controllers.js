@@ -1,6 +1,6 @@
-var joblistControllers = angular.module('joblistControllers',[]);
+var wirknControllers = angular.module('wirknControllers',[]);
 
-joblistControllers.controller('ListController', ['$scope', '$routeParams', '$location', '$cookies', '$uibModal', 'JobService', 'LocationService', 'LocaleService', 'ModalService', function($scope, $routeParams, $location, $cookies, $uibModal, JobService, LocationService, LocaleService, ModalService) {
+wirknControllers.controller('ListController', ['$scope', '$routeParams', '$location', '$cookies', '$uibModal', 'JobService', 'LocationService', 'LocaleService', 'ModalService', function($scope, $routeParams, $location, $cookies, $uibModal, JobService, LocationService, LocaleService, ModalService) {
 
     $scope.pageClass = 'page-list';
 
@@ -54,7 +54,7 @@ joblistControllers.controller('ListController', ['$scope', '$routeParams', '$loc
     }
 }]);
 
-joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'JobService', 'LocaleService', function($scope, $routeParams, JobService, LocaleService) {
+wirknControllers.controller('DetailsController',['$scope', '$routeParams', 'JobService', 'LocaleService', function($scope, $routeParams, JobService, LocaleService) {
 
     $scope.pageClass = 'page-details';
 
@@ -100,7 +100,7 @@ joblistControllers.controller('DetailsController',['$scope', '$routeParams', 'Jo
     };
 }]);
 
-joblistControllers.controller('SearchController', ['$scope', '$routeParams', 'LocaleService', function($scope, $routeParams, LocaleService) {
+wirknControllers.controller('SearchController', ['$scope', '$routeParams', 'LocaleService', function($scope, $routeParams, LocaleService) {
 
     $scope.pageClass = 'page-search';
 
@@ -160,7 +160,7 @@ joblistControllers.controller('SearchController', ['$scope', '$routeParams', 'Lo
     ];
 }]);
 
-joblistControllers.controller('LocationController', ['$scope', '$routeParams', '$location', '$cookies', 'LocaleService', function($scope, $routeParams, $location, $cookies, LocaleService) {
+wirknControllers.controller('LocationController', ['$scope', '$routeParams', '$location', '$cookies', 'LocaleService', function($scope, $routeParams, $location, $cookies, LocaleService) {
     $scope.pageClass = 'page-location';
 
     LocaleService.setLocale($routeParams.locale);
@@ -211,7 +211,7 @@ joblistControllers.controller('LocationController', ['$scope', '$routeParams', '
     };
 }]);
 
-joblistControllers.controller('ModalInstanceController', ['$scope', '$uibModalInstance', 'message', function($scope, $uibModalInstance, message) {
+wirknControllers.controller('ModalInstanceController', ['$scope', '$uibModalInstance', 'message', function($scope, $uibModalInstance, message) {
     
     $scope.message = message;
 
