@@ -1,6 +1,7 @@
-var joblistControllers = angular.module('joblistControllers',[]);
+var wirknControllers = angular.module('wirknControllers',[]);
 
-joblistControllers.controller('ListController',
+<<<<<<< HEAD
+wirknControllers.controller('ListController',
                               ['$scope', '$routeParams', '$location', '$cookies',
                                '$uibModal', 'JobService', 'LocationService',
                                'LocaleService', 'ModalService', 'KikService',
@@ -97,11 +98,15 @@ joblistControllers.controller('ListController',
     KikService.track('kik_job_list');
 }]);
 
+<<<<<<< HEAD
 joblistControllers.controller('DetailsController',
                               ['$scope', '$routeParams', 'JobService',
                                'LocaleService', 'KikService',
                                function($scope, $routeParams, JobService, 
                                         LocaleService, KikService) {
+=======
+wirknControllers.controller('DetailsController',['$scope', '$routeParams', 'JobService', 'LocaleService', function($scope, $routeParams, JobService, LocaleService) {
+>>>>>>> modal
 
     $scope.pageClass = 'page-details';
 
@@ -161,7 +166,7 @@ joblistControllers.controller('DetailsController',
     };
 }]);
 
-joblistControllers.controller('SearchController', ['$scope', '$routeParams', 'LocaleService', function($scope, $routeParams, LocaleService) {
+wirknControllers.controller('SearchController', ['$scope', '$routeParams', 'LocaleService', function($scope, $routeParams, LocaleService) {
 
     $scope.pageClass = 'page-search';
 
@@ -221,7 +226,7 @@ joblistControllers.controller('SearchController', ['$scope', '$routeParams', 'Lo
     ];
 }]);
 
-joblistControllers.controller('LocationController', ['$scope', '$routeParams', '$location', '$cookies', 'LocaleService', function($scope, $routeParams, $location, $cookies, LocaleService) {
+wirknControllers.controller('LocationController', ['$scope', '$routeParams', '$location', '$cookies', 'LocaleService', function($scope, $routeParams, $location, $cookies, LocaleService) {
     $scope.pageClass = 'page-location';
 
     LocaleService.setLocale($routeParams.locale);
@@ -272,16 +277,19 @@ joblistControllers.controller('LocationController', ['$scope', '$routeParams', '
     };
 }]);
 
-joblistControllers.controller('ModalInstanceController', ['$scope', '$uibModalInstance', 'message', function($scope, $uibModalInstance, message) {
+wirknControllers.controller('ModalInstanceController', ['$scope', '$uibModalInstance', 'message', function($scope, $uibModalInstance, message) {
     
     $scope.message = message;
 
     $scope.ok = function () {
-        kik.send({
-            title: 'Message title',
-            text: 'Message body',
-            url: location.href
-        });
+        if (kik.send) {
+            kik.send({
+                title: 'My Job Personality',
+                text: 'I just took the Wirkn Personality Test and found out what kind of job personality I have — check out my results or give it a try yourself!',
+                pic: 'https://wirknintellibot.herokuapp.com/images/wirkn-jobs.png',
+                url: location.href
+            });
+        }
         $uibModalInstance.close();
     };
 

@@ -1,6 +1,6 @@
-var translateDirectives = angular.module('translateDirectives', []);
+var wirknDirectives = angular.module('wirknDirectives', []);
 
-translateDirectives.directive('ngTranslateLanguageSelect', ['LocaleService', function (LocaleService) {
+wirknDirectives.directive('ngTranslateLanguageSelect', ['LocaleService', function (LocaleService) {
 
         return {
             restrict: 'A',
