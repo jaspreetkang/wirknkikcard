@@ -286,9 +286,7 @@ wirknServices.service('ModalService', ['$uibModal', function($uibModal) {
     };
 }]);
 
-var kikServices = angular.module('kikServices', []);
-
-kikServices.service('KikService', ['$cookies', function($cookies) {
+wirknServices.service('KikService', ['$cookies', function($cookies) {
     var setKikUsername = function(value) {
         $cookies.put("kikUsername", value);
     };

@@ -1,6 +1,5 @@
 var wirknControllers = angular.module('wirknControllers',[]);
 
-<<<<<<< HEAD
 wirknControllers.controller('ListController',
                               ['$scope', '$routeParams', '$location', '$cookies',
                                '$uibModal', 'JobService', 'LocationService',
@@ -98,15 +97,11 @@ wirknControllers.controller('ListController',
     KikService.track('kik_job_list');
 }]);
 
-<<<<<<< HEAD
-joblistControllers.controller('DetailsController',
-                              ['$scope', '$routeParams', 'JobService',
+wirknControllers.controller('DetailsController',
+                             ['$scope', '$routeParams', 'JobService',
                                'LocaleService', 'KikService',
                                function($scope, $routeParams, JobService, 
                                         LocaleService, KikService) {
-=======
-wirknControllers.controller('DetailsController',['$scope', '$routeParams', 'JobService', 'LocaleService', function($scope, $routeParams, JobService, LocaleService) {
->>>>>>> modal
 
     $scope.pageClass = 'page-details';
 
