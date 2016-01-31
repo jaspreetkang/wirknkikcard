@@ -1,3 +1,24 @@
+require('angular');
+require('angular-route');
+require('angular-animate');
+require('angular-bootstrap');
+require('angular-cookies');
+require('angular-dynamic-locale');
+require('angular-resource');
+require('angular-sanitize');
+require('angular-translate');
+require('angular-translate-handler-log');
+require('angular-translate-loader-static-files');
+require('angular-translate-storage-cookie');
+require('angular-translate-storage-local');
+require('ngGeolocation');
+require('ngInfiniteScroll');
+
+require('./services.js');
+require('./animations.js');
+require('./directives.js');
+require('./controllers.js');
+
 var wirknApp = angular.module('wirknApp',[
     'ngRoute',
     'ngGeolocation',

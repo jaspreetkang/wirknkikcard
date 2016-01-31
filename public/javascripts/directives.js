@@ -29,3 +29,4 @@ wirknDirectives.directive('ngTranslateLanguageSelect', ['LocaleService', functio
         };
 }]);
 
+module.exports = wirknDirectives;

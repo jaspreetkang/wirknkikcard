@@ -293,7 +293,7 @@ wirknServices.service('KikService', ['$cookies', function($cookies) {
 
     var getKikUsername = function() {
         return $cookies.get("kikUsername");
-    }
+    };
 
     var identifyKikUser = function() {
         if (kik.enabled) {
@@ -327,3 +327,4 @@ wirknServices.service('KikService', ['$cookies', function($cookies) {
     };
 }]);
 
+module.exports = wirknServices;

@@ -78,7 +78,7 @@ wirknControllers.controller('ListController',
             Array.prototype.push.apply($scope.joblist, data);
             $scope.pauseScroll = false;
         });
-    }
+    };
 
     // Modal open
     if ($location.search().q && ModalService.openModal()) {
@@ -293,3 +293,4 @@ wirknControllers.controller('ModalInstanceController', ['$scope', '$uibModalInst
     };
 }]);
 
+module.exports = wirknControllers;
