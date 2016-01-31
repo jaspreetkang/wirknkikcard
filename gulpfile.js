@@ -49,7 +49,7 @@ gulp.task('build-js', function() {
         entries: './public/javascripts/app.js',
         debug: false,
         paths: ['./public/javascripts', './public/vendor'],
-        transform: [debowerify]
+        transform: [debowerify, ngAnnotate]
     });
 
     return b.bundle()

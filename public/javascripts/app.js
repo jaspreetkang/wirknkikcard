@@ -20,7 +20,7 @@ require('./animations');
 require('./directives');
 require('./controllers');
 
-var wirknApp = angular.module('wirknApp',[
+var wirknApp = angular.module('wirknApp', [
     'ngRoute',
     'ngGeolocation',
     'ngCookies',
@@ -34,17 +34,17 @@ var wirknApp = angular.module('wirknApp',[
     'wirknControllers',
     'wirknDirectives',
     'wirknServices'
-   ])
-    .constant('LOCALES', {
-        'locales': {
-            'en': 'English',
-            'fr': 'French',
-            'ru': 'Russian'
-        },
-        'preferredLocale': 'en'
-    });
+])
+.constant('LOCALES', {
+    'locales': {
+        'en': 'English',
+        'fr': 'French',
+        'ru': 'Russian'
+    },
+    'preferredLocale': 'en'
+});
 
-wirknApp.config(['$routeProvider', 'LOCALES', function($routeProvider, LOCALES){
+wirknApp.config(function($routeProvider, LOCALES){
     $routeProvider.
     when('/:locale/list/:searchTerm?', {
         templateUrl: '/partials/list.html',
@@ -65,22 +65,22 @@ wirknApp.config(['$routeProvider', 'LOCALES', function($routeProvider, LOCALES){
     otherwise({
         redirectTo: '/' + LOCALES.preferredLocale + '/list'
     });
-}]);
+});
 
-wirknApp.config(['$translateProvider', function($translateProvider) {
+wirknApp.config(function($translateProvider) {
     $translateProvider.useMissingTranslationHandlerLog();
-}]);
+});
 
-wirknApp.config(['$translateProvider', function($translateProvider) {
+wirknApp.config(function($translateProvider) {
     $translateProvider.useStaticFilesLoader({
         prefix: 'resources/locale-',
         suffix: '.json'
     });
     $translateProvider.preferredLanguage('en');
     $translateProvider.useLocalStorage();
-}]);
+});
 
-wirknApp.config(['tmhDynamicLocaleProvider', function(tmhDynamicLocaleProvider) {
+wirknApp.config(function(tmhDynamicLocaleProvider) {
     tmhDynamicLocaleProvider.localeLocationPattern('vendor/angular-i18n/angular-locale_{{locale}}.js');
-}]);
+});
 

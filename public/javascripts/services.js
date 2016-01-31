@@ -1,6 +1,6 @@
 var wirknServices = angular.module('wirknServices', []);
 
-wirknServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q, $http, $cacheFactory) {
+wirknServices.service('JobService', function($q, $http, $cacheFactory) {
     var city = '';
     this.cache = $cacheFactory('jobData');
     var self = this;
@@ -113,9 +113,9 @@ wirknServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q
         getDetails: getDetails,
         getCity: getCity
     };
-}]);
+});
 
-wirknServices.service('LocaleService', ['$translate', 'LOCALES', '$rootScope', 'tmhDynamicLocale', function($translate, LOCALES, $rootScope, tmhDynamicLocale) {
+wirknServices.service('LocaleService', function($translate, LOCALES, $rootScope, tmhDynamicLocale) {
     // Prepare Locales Info
     var localesObj = LOCALES.locales;
 
@@ -177,9 +177,9 @@ wirknServices.service('LocaleService', ['$translate', 'LOCALES', '$rootScope', '
             return currentLocale;
         }
     };
-}]);
+});
 
-wirknServices.service('LocationService', ['$q', '$geolocation', function($q, $geolocation) {
+wirknServices.service('LocationService', function($q, $geolocation) {
     var latitude = 0;
     var longitude = 0;
     var locationIsInitialized = false;
@@ -226,9 +226,9 @@ wirknServices.service('LocationService', ['$q', '$geolocation', function($q, $ge
         getCoordinates: getCoordinates,
         initializeLocation: initializeLocation
     };
-}]);
+});
 
-wirknServices.service('ModalService', ['$uibModal', function($uibModal) {
+wirknServices.service('ModalService', function($uibModal) {
     
     var modalShouldOpen = true;
 
@@ -284,9 +284,9 @@ wirknServices.service('ModalService', ['$uibModal', function($uibModal) {
         message: message,
         open: open
     };
-}]);
+});
 
-wirknServices.service('KikService', ['$cookies', function($cookies) {
+wirknServices.service('KikService', function($cookies) {
     var setKikUsername = function(value) {
         $cookies.put("kikUsername", value);
     };
@@ -325,6 +325,6 @@ wirknServices.service('KikService', ['$cookies', function($cookies) {
         identifyKikUser: identifyKikUser,
         track: track
     };
-}]);
+});
 
 module.exports = wirknServices;

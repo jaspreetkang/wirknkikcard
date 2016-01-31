@@ -1,12 +1,9 @@
 var wirknControllers = angular.module('wirknControllers',[]);
 
 wirknControllers.controller('ListController',
-                              ['$scope', '$routeParams', '$location', '$cookies',
-                               '$uibModal', 'JobService', 'LocationService',
-                               'LocaleService', 'ModalService', 'KikService',
-                               function($scope, $routeParams, $location, $cookies,
-                                        $uibModal, JobService, LocationService,
-                                        LocaleService, ModalService, KikService) {
+                            function($scope, $routeParams, $location, $cookies,
+                                     $uibModal, JobService, LocationService,
+                                     LocaleService, ModalService, KikService) {
 
     $scope.pageClass = 'page-list';
 
@@ -95,13 +92,11 @@ wirknControllers.controller('ListController',
     KikService.identifyKikUser();
 
     KikService.track('kik_job_list');
-}]);
+});
 
 wirknControllers.controller('DetailsController',
-                             ['$scope', '$routeParams', 'JobService',
-                               'LocaleService', 'KikService',
-                               function($scope, $routeParams, JobService, 
-                                        LocaleService, KikService) {
+                            function($scope, $routeParams, JobService, 
+                                     LocaleService, KikService) {
 
     $scope.pageClass = 'page-details';
 
@@ -159,9 +154,9 @@ wirknControllers.controller('DetailsController',
             window.location.replace(link);
         });      
     };
-}]);
+});
 
-wirknControllers.controller('SearchController', ['$scope', '$routeParams', 'LocaleService', function($scope, $routeParams, LocaleService) {
+wirknControllers.controller('SearchController', function($scope, $routeParams, LocaleService) {
 
     $scope.pageClass = 'page-search';
 
@@ -219,9 +214,9 @@ wirknControllers.controller('SearchController', ['$scope', '$routeParams', 'Loca
             image: "merchandising"
         }
     ];
-}]);
+});
 
-wirknControllers.controller('LocationController', ['$scope', '$routeParams', '$location', '$cookies', 'LocaleService', function($scope, $routeParams, $location, $cookies, LocaleService) {
+wirknControllers.controller('LocationController', function($scope, $routeParams, $location, $cookies, LocaleService) {
     $scope.pageClass = 'page-location';
 
     LocaleService.setLocale($routeParams.locale);
@@ -270,9 +265,9 @@ wirknControllers.controller('LocationController', ['$scope', '$routeParams', '$l
         $cookies.remove('lon');
         location.replace('#/' + $scope.currentLocale + '/list');
     };
-}]);
+});
 
-wirknControllers.controller('ModalInstanceController', ['$scope', '$uibModalInstance', 'message', function($scope, $uibModalInstance, message) {
+wirknControllers.controller('ModalInstanceController', function($scope, $uibModalInstance, message) {
     
     $scope.message = message;
 
@@ -291,6 +286,6 @@ wirknControllers.controller('ModalInstanceController', ['$scope', '$uibModalInst
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
-}]);
+});
 
 module.exports = wirknControllers;
