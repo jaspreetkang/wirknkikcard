@@ -74,7 +74,7 @@ wirknServices.service('JobService', ['$q', '$http', '$cacheFactory', function($q
 
         fetchData(url, cacheKey).then(function(response) {
             defer.resolve(response.data);
-        }, function(reponse) {
+        }, function(response) {
             defer.reject(response);
         });
 
