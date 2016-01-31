@@ -4,3 +4,4 @@
 .tern-project
 node_modules
 public/vendor
+*.map

@@ -47,7 +47,7 @@ gulp.task('build-template-cache', function() {
 gulp.task('build-js', function() {
     var b = browserify({
         entries: './public/javascripts/app.js',
-        debug: true,
+        debug: false,
         paths: ['./public/javascripts', './public/vendor'],
         transform: [debowerify]
     });
