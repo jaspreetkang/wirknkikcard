@@ -14,10 +14,11 @@ require('angular-translate-storage-local');
 require('ngGeolocation');
 require('ngInfiniteScroll');
 
-require('./services.js');
-require('./animations.js');
-require('./directives.js');
-require('./controllers.js');
+require('../dist/partials/templateCachePartials');
+require('./services');
+require('./animations');
+require('./directives');
+require('./controllers');
 
 var wirknApp = angular.module('wirknApp',[
     'ngRoute',
@@ -28,6 +29,7 @@ var wirknApp = angular.module('wirknApp',[
     'tmh.dynamicLocale',
     'infinite-scroll',
     'ui.bootstrap',
+    'wirknPartials',
     'wirknAnimations',
     'wirknControllers',
     'wirknDirectives',
@@ -45,19 +47,19 @@ var wirknApp = angular.module('wirknApp',[
 wirknApp.config(['$routeProvider', 'LOCALES', function($routeProvider, LOCALES){
     $routeProvider.
     when('/:locale/list/:searchTerm?', {
-        templateUrl: 'partials/list.html',
+        templateUrl: '/partials/list.html',
         controller: 'ListController'
     }).
     when('/:locale/details/:itemId', {
-        templateUrl: 'partials/details.html',
+        templateUrl: '/partials/details.html',
         controller: 'DetailsController'
     }).
     when('/:locale/search', {
-        templateUrl: 'partials/search.html',
+        templateUrl: '/partials/search.html',
         controller: 'SearchController'
     }).
     when('/:locale/location', {
-        templateUrl: 'partials/location.html',
+        templateUrl: '/partials/location.html',
         controller: 'LocationController'
     }).
     otherwise({
