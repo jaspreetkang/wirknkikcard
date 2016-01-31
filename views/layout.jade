@@ -2,26 +2,26 @@ doctype html
 html(ng-app="wirknApp")
     head
         title= 'Wirkn | Local Job Search'
-        meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-        meta(charset="UTF-8")
+        meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+        meta(charset='UTF-8')
 
         link(rel='shortcut icon' href='/images/favicons/favicon.ico')
 
-        link(rel='stylesheet', href='vendor/bootstrap/dist/css/bootstrap.min.css')
-        link(rel='stylesheet', href='vendor/angular-bootstrap/ui-bootstrap-csp.css')
-        link(rel='stylesheet', href='vendor/font-awesome/css/font-awesome.min.css')
+        link(rel='stylesheet' href='vendor/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet' href='vendor/angular-bootstrap/ui-bootstrap-csp.css')
+        link(rel='stylesheet' href='vendor/font-awesome/css/font-awesome.min.css')
         
         link(rel='stylesheet' href='/dist/css/all.css')
 
         script(type='text/javascript' src='/vendor/jquery/dist/jquery.min.js')
-        script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?libraries=places")
+        script(type='text/javascript' src="https://maps.googleapis.com/maps/api/js?libraries=places")
         script(type='text/javascript' src='/javascripts/branchio/branchio.min.js')
         script(type='text/javascript' src='https://cdn.kik.com/kik/2.0.5/kik.js')
 
-        script(type='text/javascript', src='/javascripts/segment/analytics.min.js')
+        script(type='text/javascript' src='/javascripts/segment/analytics.min.js')
         script.
             analytics.load('#{analytics_api_key}');
-            analytics.page()
+            analytics.page();
 
         script(type='text/javascript' src='/dist/js/bundle.js')
     body(class = "kik")
