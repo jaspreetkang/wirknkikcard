@@ -59,7 +59,7 @@ router.get('/getSuggestions', function(req, res, next) {
         'suggestions',
         '?q=' + req.query.q
     ];
-    var url = urlParts.join(urlParts);
+    var url = urlParts.join('');
 
     request(url, function(error, response, body) {
         if (!error && response.statusCode == 200) {
