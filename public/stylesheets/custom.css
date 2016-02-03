@@ -93,7 +93,11 @@ $font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-s
     cursor: pointer;
 }
 
-.page-location input.location-input {
+.page-search .search-terms {
+    margin-top: 60px;
+}
+
+input.header-input {
     border: none;
     border-bottom: solid 1px white;
     border-collapse: collapse;
@@ -104,29 +108,29 @@ $font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-s
     color: white;
 }
 
-.page-location input.location-input:focus {
+input.header-input:focus {
     outline-width: 0;
 }
 
-.page-location input.location-input::placeholder {
+input.header-input::placeholder {
     color: white;
 }
 
-.page-location input.location-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+input.header-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: white;
 }
-.page-location input.location-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: white;
-    opacity: 1;
-}
-.page-location input.location-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+input.header-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: white;
     opacity: 1;
 }
-.page-location input.location-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+input.header-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+    opacity: 1;
+}
+input.header-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: white;
 }
-.page-location input.location-input:placeholder-shown {
+input.header-input:placeholder-shown {
     color: white;
     border: none;
     border-bottom: solid 1px white;

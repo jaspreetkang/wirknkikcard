@@ -196,7 +196,7 @@ module.run(['$templateCache', function($templateCache) {
     '        <div class="row">\n' +
     '            <div class="col-xs-10">\n' +
     '                <i class="fa fa-map-marker header-icons"></i>\n' +
-    '                <input focus="true" type="text" placeholder="{{\'partials.location.LocationPlaceholder\' | translate}}" class="location-input" ng-model="query" ng-keyup="getSuggestions(query)">\n' +
+    '                <input focus="true" type="text" placeholder="{{\'partials.location.LocationPlaceholder\' | translate}}" class="header-input" ng-model="query" ng-keyup="getSuggestions(query)">\n' +
     '            </div>\n' +
     '            <div class="col-xs-2">\n' +
     '                <a href="#/{{currentLocale}}/list" onclick="history.go(-1);return false;" class="pull-right"><i class="fa fa-times-circle header-icons"></i></a>\n' +
@@ -237,23 +237,35 @@ module.run(['$templateCache', function($templateCache) {
     '<nav class="header">\n' +
     '    <div class="container">\n' +
     '        <div class="row">\n' +
-    '            <div class="col-xs-8"><i class="fa fa-search header-icons"></i> {{"partials.search.SearchJobs" | translate}}</div>\n' +
+    '            <div class="col-xs-8">\n' +
+    '                <i class="fa fa-search header-icons"></i>\n' +
+    '                <!--{{"partials.search.SearchJobs" | translate}}-->\n' +
+    '                <input focus="true" type="text" placeholder="{{\'partials.search.SearchJobs\' | translate}}" class="header-input" ng-model="keyword" ng-keyup="getSuggestions(keyword)">\n' +
+    '            </div>\n' +
     '            <div class="col-xs-4">\n' +
     '                <a href="#/{{currentLocale}}/list" onclick="history.go(-1);return false;" class="pull-right"><i class="fa fa-times-circle header-icons"></i></a>\n' +
     '            </div>\n' +
     '        </div>\n' +
     '    </div>\n' +
     '</nav>\n' +
-    '<div id="top-bar" class="offset"></div>\n' +
-    '<div>\n' +
+    '<div class="search-terms">\n' +
     '    <ul>\n' +
     '        <li class="search-term"><p class="search-label">{{"partials.search.Categories" | translate}}</p></li>\n' +
-    '        <li ng-repeat="item in categories" class="search-term">\n' +
-    '            <a href="#/{{currentLocale}}/list/{{item.term}}">\n' +
-    '                <img class="search-image" ng-src="/images/svgs/{{item.image}}.svg" alt="">\n' +
-    '                <span class="search-name">{{item.name | translate}}</span>\n' +
-    '            </a>\n' +
-    '        </li>\n' +
+    '        <div ng-show="categoryVisible">\n' +
+    '            <li ng-repeat="item in categories" class="search-term">\n' +
+    '                <a href="#/{{currentLocale}}/list/{{item.term}}">\n' +
+    '                    <img class="search-image" ng-src="/images/pngs/{{item.image}}.png" alt="">\n' +
+    '                    <span class="search-name">{{item.name | translate}}</span>\n' +
+    '                </a>\n' +
+    '            </li>\n' +
+    '        </div>\n' +
+    '        <div ng-show="!categoryVisible">\n' +
+    '            <li ng-repeat="item in suggestions" class="search-term">\n' +
+    '                <a href="#/{{currentLocale}}/list/{{item.title}}">\n' +
+    '                    <span class="search-name">{{item.title}}</span>\n' +
+    '                </a>\n' +
+    '            </li>\n' +
+    '        </div>\n' +
     '    </ul>\n' +
     '</div>\n' +
     '');

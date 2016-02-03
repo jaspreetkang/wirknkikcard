@@ -97,7 +97,7 @@
 
 /* slide in from the bottom */
 @keyframes slideInUp {
-    from    { transform:translateY(100%); }
+    from    { transform:translateY(30%); }
     to      { transform: translateY(0); }
 }
 
