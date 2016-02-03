@@ -26,37 +26,42 @@ module.run(['$templateCache', function($templateCache) {
     '</div>\n' +
     '<div class="container job-body">\n' +
     '    <div class="row">\n' +
-    '        <div class="col-md-12 data-box details-data-box">\n' +
-    '            <div class="row">\n' +
-    '                <div class="col-md-12 job-body-heading">\n' +
-    '                    ROLE\n' +
-    '                </div>\n' +
-    '                <div class="col-md-12">\n' +
-    '                    {{job.title}} at {{job.employer.name}}\n' +
-    '                </div>\n' +
-    '                <br>\n' +
-    '                <div class="col-md-12 job-body-heading">\n' +
-    '                    JOB TYPE\n' +
-    '                </div>\n' +
-    '                <div class="col-md-12">\n' +
-    '                    {{job.employment_type}}\n' +
-    '                </div>\n' +
-    '                <br>\n' +
-    '                <div class="col-md-12 job-body-heading">\n' +
-    '                    LOCATION\n' +
-    '                </div>\n' +
-    '                <div class="col-md-12">\n' +
-    '                    <a class="underline" href="http://maps.google.com/?q={{job.location.address}}">{{job.location.address}},{{job.location.city}},{{job.location.province}}</a>\n' +
+    '        <div class="data-box-outer">\n' +
+    '            <div class="col-md-12 data-box details-data-box">\n' +
+    '                <div class="row">\n' +
+    '                    <div class="col-md-12 job-body-heading">\n' +
+    '                        {{"partials.details.Role" | translate}}\n' +
+    '                    </div>\n' +
+    '                    <div class="col-md-12">\n' +
+    '                        {{job.title}} {{"partials.details.At" | translate}} {{job.employer.name}}\n' +
+    '                    </div>\n' +
+    '                    <br>\n' +
+    '                    <div class="col-md-12 job-body-heading">\n' +
+    '                        {{"partials.details.JobType" | translate}}\n' +
+    '                    </div>\n' +
+    '                    <div class="col-md-12">\n' +
+    '                        {{job.employment_type}}\n' +
+    '                    </div>\n' +
+    '                    <br>\n' +
+    '                    <div class="col-md-12 job-body-heading">\n' +
+    '                        {{"partials.details.Location" | translate}}\n' +
+    '                    </div>\n' +
+    '                    <div class="col-md-12">\n' +
+    '                        <a class="underline" href="http://maps.google.com/?q={{job.location.address}}">{{job.location.address}},{{job.location.city}},{{job.location.province}}</a>\n' +
+    '                    </div>\n' +
     '                </div>\n' +
     '            </div>\n' +
     '        </div>\n' +
-    '        <div class="col-md-12 data-box job-body-details details-data-box">\n' +
-    '            <div class="row">\n' +
-    '                <div class="col-md-12 job-body-heading">\n' +
-    '                    JOB DETAILS\n' +
-    '                </div>\n' +
-    '                <div class="col-md-12">\n' +
-    '                    <div ng-bind-html="job.description"></div>\n' +
+    '        <div class="clearfix"></div>\n' +
+    '        <div class="data-box-outer">\n' +
+    '            <div class="col-md-12 data-box job-body-details details-data-box">\n' +
+    '                <div class="row">\n' +
+    '                    <div class="col-md-12 job-body-heading">\n' +
+    '                        {{"partials.details.JobDetails" | translate}}\n' +
+    '                    </div>\n' +
+    '                    <div class="col-md-12">\n' +
+    '                        <div ng-bind-html="job.description | simpleFormat"></div>\n' +
+    '                    </div>\n' +
     '                </div>\n' +
     '            </div>\n' +
     '        </div>\n' +
@@ -143,8 +148,7 @@ module.run(['$templateCache', function($templateCache) {
     '                                <span>{{item.distance/1000 | number:2}}  km away</span>\n' +
     '                            </div>\n' +
     '                        </div>\n' +
-    '                        <div class="data-img">\n' +
-    '                        <img ng-src="{{item.cover_images[0]}}"></div>\n' +
+    '                        <div class="data-img" back-img="{{item.cover_images[0]}}"></div>\n' +
     '                    </div>\n' +
     '                </a>\n' +
     '            </div>\n' +
@@ -192,7 +196,7 @@ module.run(['$templateCache', function($templateCache) {
     '        <div class="row">\n' +
     '            <div class="col-xs-10">\n' +
     '                <i class="fa fa-map-marker header-icons"></i>\n' +
-    '                <input autofocus type="text" placeholder="{{\'partials.location.LocationPlaceholder\' | translate}}" class="location-input" ng-model="query" ng-keyup="getSuggestions(query)">\n' +
+    '                <input focus="true" type="text" placeholder="{{\'partials.location.LocationPlaceholder\' | translate}}" class="location-input" ng-model="query" ng-keyup="getSuggestions(query)">\n' +
     '            </div>\n' +
     '            <div class="col-xs-2">\n' +
     '                <a href="#/{{currentLocale}}/list" onclick="history.go(-1);return false;" class="pull-right"><i class="fa fa-times-circle header-icons"></i></a>\n' +

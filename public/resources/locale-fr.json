@@ -16,6 +16,12 @@
     "partials.list.Idealist.title": "L'idéaliste",
     "partials.list.Idealist.body": "Tu aimes tout et t'intéresse à tout. Comment faire autrement? Pourquoi faire un choix quand tu peux tout essayer? Certains te qualifieront d'indécis(e), mais toi tu appelles ça l'optimisme et la curiosité. On te propose donc une liste d'emplois divers, à toi de choisir celui qui te cnovient le mieux!",
 
+    "partials.details.Role": "RÔLE",
+    "partials.details.JobType": "TYPE D'EMPLOI",
+    "partials.details.At": "au",
+    "partials.details.Location": "EMPLACEMENT",
+    "partials.details.JobDetails": "DÉTAILS EMPLOI",
+
     "partials.search.SearchJobs": "Recherche d'emplois",
     "partials.search.Categories": "CATÉGORIES",
     "partials.search.Food": "Nourriture",

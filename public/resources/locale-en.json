@@ -18,6 +18,12 @@
     "partials.list.Idealist.title": "The Idealist",
     "partials.list.Idealist.body": "You love everything. What’s not to like? Why do you have to make a choice when you can just do everything? Some people call it indecisive, but you call it optimism. We’ll show you a list of all our jobs and you can decide on what’s best for you?",
 
+    "partials.details.Role": "ROLE",
+    "partials.details.JobType": "JOB TYPE",
+    "partials.details.At": "at",
+    "partials.details.Location": "LOCATION",
+    "partials.details.JobDetails": "JOB DETAILS",
+
     "partials.search.SearchJobs": "Search Jobs",
     "partials.search.Categories": "CATEGORIES",
     "partials.search.Food": "Food",
