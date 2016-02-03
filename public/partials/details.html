@@ -18,37 +18,42 @@
 </div>
 <div class="container job-body">
     <div class="row">
-        <div class="col-md-12 data-box details-data-box">
-            <div class="row">
-                <div class="col-md-12 job-body-heading">
-                    ROLE
-                </div>
-                <div class="col-md-12">
-                    {{job.title}} at {{job.employer.name}}
-                </div>
-                <br>
-                <div class="col-md-12 job-body-heading">
-                    JOB TYPE
-                </div>
-                <div class="col-md-12">
-                    {{job.employment_type}}
-                </div>
-                <br>
-                <div class="col-md-12 job-body-heading">
-                    LOCATION
-                </div>
-                <div class="col-md-12">
-                    <a class="underline" href="http://maps.google.com/?q={{job.location.address}}">{{job.location.address}},{{job.location.city}},{{job.location.province}}</a>
+        <div class="data-box-outer">
+            <div class="col-md-12 data-box details-data-box">
+                <div class="row">
+                    <div class="col-md-12 job-body-heading">
+                        {{"partials.details.Role" | translate}}
+                    </div>
+                    <div class="col-md-12">
+                        {{job.title}} {{"partials.details.At" | translate}} {{job.employer.name}}
+                    </div>
+                    <br>
+                    <div class="col-md-12 job-body-heading">
+                        {{"partials.details.JobType" | translate}}
+                    </div>
+                    <div class="col-md-12">
+                        {{job.employment_type}}
+                    </div>
+                    <br>
+                    <div class="col-md-12 job-body-heading">
+                        {{"partials.details.Location" | translate}}
+                    </div>
+                    <div class="col-md-12">
+                        <a class="underline" href="http://maps.google.com/?q={{job.location.address}}">{{job.location.address}},{{job.location.city}},{{job.location.province}}</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-12 data-box job-body-details details-data-box">
-            <div class="row">
-                <div class="col-md-12 job-body-heading">
-                    JOB DETAILS
-                </div>
-                <div class="col-md-12">
-                    <div ng-bind-html="job.description"></div>
+        <div class="clearfix"></div>
+        <div class="data-box-outer">
+            <div class="col-md-12 data-box job-body-details details-data-box">
+                <div class="row">
+                    <div class="col-md-12 job-body-heading">
+                        {{"partials.details.JobDetails" | translate}}
+                    </div>
+                    <div class="col-md-12">
+                        <div ng-bind-html="job.description | simpleFormat"></div>
+                    </div>
                 </div>
             </div>
         </div>

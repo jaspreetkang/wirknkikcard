@@ -16,7 +16,7 @@ router.get('/getJobs', function(req, res, next) {
     var lon = req.query.lon;
     var radius = '25000';
     var searchTerm = req.query.q;
-    var limit = req.query.limit || '20';
+    var limit = req.query.limit || '10';
     var offset = req.query.offset || '00';
     var expired = 'false';
 

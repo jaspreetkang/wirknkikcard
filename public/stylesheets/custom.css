@@ -20,7 +20,7 @@ $font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-s
 }
 
 .header-icons {
-    padding: 0 5px;
+    padding: 0 8px;
     font-size: 1.1em;
 }
 
@@ -29,6 +29,10 @@ $font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-s
     font-size: 1.8em;
     top: 2px;
     position: relative;
+}
+
+.page-list .job-box {
+    height: 120px;
 }
 
 .page-search .search-image {
@@ -91,10 +95,17 @@ $font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-s
 
 .page-location input.location-input {
     border: none;
+    border-bottom: solid 1px white;
+    border-collapse: collapse;
     background: #02a8e0;
     height: 50px;
-    width: 90%;
+    width: 70%;
+    padding-left: 8px;
     color: white;
+}
+
+.page-location input.location-input:focus {
+    outline-width: 0;
 }
 
 .page-location input.location-input::placeholder {
@@ -118,6 +129,11 @@ $font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-s
 .page-location input.location-input:placeholder-shown {
     color: white;
     border: none;
+    border-bottom: solid 1px white;
+}
+
+.page-details .data-box-outer {
+    margin: 10px;
 }
 
 .personality-modal .modal-image {
@@ -138,6 +154,13 @@ $font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-s
 
 .modal-buttons.show-jobs {
     background-color: #00a9e0;
+}
+
+.joblist-image {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    float: right;
 }
 
 @media screen and (max-width: 600px) {

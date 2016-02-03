@@ -6,6 +6,7 @@ require('angular-cookies');
 require('angular-dynamic-locale');
 require('angular-resource');
 require('angular-sanitize');
+require('angular-simple-format');
 require('angular-translate');
 require('angular-translate-handler-log');
 require('angular-translate-loader-static-files');
@@ -25,6 +26,7 @@ var wirknApp = angular.module('wirknApp', [
     'ngGeolocation',
     'ngCookies',
     'ngSanitize',
+    'simpleFormat',
     'pascalprecht.translate',
     'tmh.dynamicLocale',
     'infinite-scroll',

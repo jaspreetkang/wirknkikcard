@@ -26,6 +26,7 @@
     "angular-i18n": "~1.4.9",
     "angular-animate": "~1.4.9",
     "angular-sanitize": "~1.4.9",
-    "ngInfiniteScroll": "^1.2.2"
+    "ngInfiniteScroll": "^1.2.2",
+    "angular-simple-format": "^0.9.2"
   }
 }

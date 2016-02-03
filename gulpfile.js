@@ -85,6 +85,7 @@ gulp.task('watch', function() {
     gulp.watch([
         './**/*.js',
         './**/*.css',
+        './**/*.html',
         '!./public/dist/**/*.*'
     ],
     ['lint', 'build']);
