@@ -156,7 +156,7 @@ wirknControllers.controller('DetailsController',
     };
 });
 
-wirknControllers.controller('SearchController', function($scope, $routeParams, LocaleService) {
+wirknControllers.controller('SearchController', function($scope, $routeParams, JobService, LocaleService) {
 
     $scope.pageClass = 'page-search';
 
@@ -166,6 +166,8 @@ wirknControllers.controller('SearchController', function($scope, $routeParams, L
     $scope.$on('$routeChangeSuccess', function(e, currentRoute, previousRoute) {
         window.scrollTo(0, 0);
     });
+
+    $scope.categoryVisible = true;
 
     $scope.categories = [
         {
@@ -214,6 +216,20 @@ wirknControllers.controller('SearchController', function($scope, $routeParams, L
             image: "merchandising"
         }
     ];
+
+    $scope.getSuggestions = function(query) {
+        if (query !== '') {
+            JobService.getSuggestions(query).then(function(data) {
+                $scope.suggestions = data;
+                $scope.categoryVisible = false;
+            }, function(response) {
+                console.log(response);
+            });
+        }
+        else {
+            $scope.categoryVisible = true;
+        }
+    };
 });
 
 wirknControllers.controller('LocationController', function($scope, $routeParams, $location, $cookies, LocaleService) {

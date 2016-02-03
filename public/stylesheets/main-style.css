@@ -6196,7 +6196,7 @@ a:hover {
 .kik .job-box {
     background-color: white;
     border-radius: 3px;
-    margin: 10px 10px 0;
+    margin-top: 10px;
     padding: 0 10px;
     height: 100px;
     overflow: hidden;

@@ -108,10 +108,28 @@ wirknServices.service('JobService', function($q, $http, $cacheFactory) {
         return defer.promise;
     };
 
+    var getSuggestions = function(query) {
+        var defer = $q.defer();
+        var urlParts = [
+            "/getSuggestions",
+            "?q=" + query
+        ];
+        var url = urlParts.join('');
+        var cacheKey = "searchTerm-" + query;
+        fetchData(url, query).then(function(response) {
+            defer.resolve(response.data);
+        }, function(response) {
+            defer.reject(response);
+        });
+
+        return defer.promise;
+    };
+
     return {
         getData: getData,
         getDetails: getDetails,
-        getCity: getCity
+        getCity: getCity,
+        getSuggestions: getSuggestions
     };
 });
 
