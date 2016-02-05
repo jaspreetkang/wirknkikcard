@@ -167,8 +167,12 @@ input.header-input:placeholder-shown {
     float: right;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
     .hidden-xxs {
         display: none;
+    }
+
+    .header-icons {
+        padding: 0 6px;
     }
 }
